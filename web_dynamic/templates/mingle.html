@@ -371,81 +371,84 @@
 
     <script>
 
-        // Function to convert ISO date string to human-readable relative time
-        function formatRelativeTime(isoDate) {
-            // Create a new Date object from the ISO date string
-            var date = new Date(isoDate);
+        function formatRelativeTime(datetimeString) {
+            // Convert datetimeString to a JavaScript Date object
+            const dt = new Date(datetimeString);
 
-            // Get the current time in milliseconds
-            var now = new Date().getTime();
+            // Get the current date and time
+            const now = new Date();
 
-            // Get the time difference in milliseconds
-            var diff = (now - date.getTime()) - 10800;
+            // Calculate the time difference in milliseconds
+            const delta = now - dt;
 
-            // Calculate the difference in various time units
-            var seconds = Math.floor(diff / 1000);
-            var minutes = Math.floor(seconds / 60);
-            var hours = Math.floor(minutes / 60);
-            var days = Math.floor(hours / 24);
-            var months = Math.floor(days / 30);
-            var years = Math.floor(months / 12);
+            // Define time intervals in milliseconds
+            const minute = 60 * 1000;
+            const hour = 60 * minute;
+            const day = 24 * hour;
+            const month = 30 * day;
+            const year = 365 * day;
 
-            // Format the result based on the time difference
-            if (years > 0) {
-                return years + (years === 1 ? " year ago" : " years ago");
-            } else if (months > 0) {
-                return months + (months === 1 ? " month ago" : " months ago");
-            } else if (days > 0) {
-                return days + (days === 1 ? " day ago" : " days ago");
-            } else if (hours > 0) {
-                return hours + (hours === 1 ? " hour ago" : " hours ago");
-            } else if (minutes > 0) {
-                return minutes + (minutes === 1 ? " minute ago" : " minutes ago");
+            // Determine the appropriate time interval
+            if (delta > year) {
+                const years = Math.floor(delta / year);
+                return `${years} year${years > 1 ? 's' : ''} ago`;
+            } else if (delta > month) {
+                const months = Math.floor(delta / month);
+                return `${months} month${months > 1 ? 's' : ''} ago`;
+            } else if (delta > day) {
+                const days = Math.floor(delta / day);
+                return `${days} day${days > 1 ? 's' : ''} ago`;
+            } else if (delta > hour) {
+                const hours = Math.floor(delta / hour);
+                return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+            } else if (delta > minute) {
+                const minutes = Math.floor(delta / minute);
+                return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
             } else {
-                return "Just now";
+                return 'Just now';
             }
         }
 
-    fetch('http://web-01.leeroynyanchwa.tech/api/v1/tales/')
-    .then(response => response.json())
-    .then(data => {
-        if (data.length > 0) {
-            $("main").empty();
-            $("main").append(`<div class="content"></div>`);
-            data.forEach(tale => {
-                $(".content").append(`
-                <div class="tale">
-                <div class="galeryDetailsContent clearfix">
-                    <!-- <div class="clearfix"></div> -->
-                    <div class="pull-left channelPhotoDescription">
-                        <div class="creator_icon">
-                            <a href="#">
-                                <i class="bi bi-person-fill"></i>
-                            </a>
-                        </div>
-                        <strong class="title">${tale.title}</strong>
-                        <div class="videoChannel pull-left">
-                            <a href="/mingle/profile/${tale.user_username}">${tale.user_username}</a>
-                        </div>
-                        <div class="galeryDetails pull-left">
-                            <time datetime="2024-05-03 13:24:51" class="videoHumanTime pull-right">
-                                <i class="bi bi-alarm"></i>${formatRelativeTime(tale.created_at)}</time>
-                            <div class="videoViews">
-                                <i class="bi bi-eye"></i>
-                                <span itemprop="interactionCount">No views</span>
+        fetch('http://web-01.leeroynyanchwa.tech/api/v1/tales/')
+        .then(response => response.json())
+        .then(data => {
+            if (data.length > 0) {
+                $("main").empty();
+                $("main").append(`<div class="content"></div>`);
+                data.forEach(tale => {
+                    $(".content").append(`
+                    <div class="tale">
+                    <div class="galeryDetailsContent clearfix">
+                        <!-- <div class="clearfix"></div> -->
+                        <div class="pull-left channelPhotoDescription">
+                            <div class="creator_icon">
+                                <a href="#">
+                                    <i class="bi bi-person-fill"></i>
+                                </a>
+                            </div>
+                            <strong class="title">${tale.title}</strong>
+                            <div class="videoChannel pull-left">
+                                <a href="/mingle/profile/${tale.user_username}">${tale.user_username}</a>
+                            </div>
+                            <div class="galeryDetails pull-left">
+                                <time datetime="2024-05-03 13:24:51" class="videoHumanTime pull-right">
+                                    <i class="bi bi-alarm"></i>${formatRelativeTime(tale.created_at)}</time>
+                                <div class="videoViews">
+                                    <i class="bi bi-eye"></i>
+                                    <span itemprop="interactionCount">No views</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="thumbsImageContainer">
+                        <div class="aspectRatio16_9">${tale.content}</div>
+                    </div>
                 </div>
-                
-                <div class="thumbsImageContainer">
-                    <div class="aspectRatio16_9">${tale.content}</div>
-                </div>
-            </div>
-                `);
+                    `);
+            });
+            }
         });
-        }
-    });
     </script>
     
 </body>
