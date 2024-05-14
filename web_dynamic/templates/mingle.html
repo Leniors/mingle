@@ -379,7 +379,9 @@
             const now = new Date();
 
             // Calculate the time difference in milliseconds
-            const delta = now - dt;
+	    console.log(now -dt);
+            const delta = (now - dt) - 10800;
+	    console.log(delta);
 
             // Define time intervals in milliseconds
             const minute = 60 * 1000;
