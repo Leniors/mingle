@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mingle</title>
+    <link rel="stylesheet" href="../static/styles/header.css">
+    <link rel="stylesheet" href="../static/styles/navbar.css">
+    <link rel="stylesheet" href="../static/styles/video_content.css">
+    <link rel="stylesheet" href="../static/styles/content.css">
+    <link rel="stylesheet" href="../static/styles/flash.css">
+    <link rel="stylesheet" href="../static/styles/tale_content.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../static/scripts/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="menu_icon"><i class="bi bi-list"></i></div>
+        <a class="logo" href="#">
+            <i class="bi bi-apple"></i>
+            <div class="title">Sigisty</div>
+        </a>
+        <div class="search_area">
+            <form action="">
+                <input placeholder="Search..." type="text" required>
+                <div class="search"><i class="bi bi-search"></i></div>
+                <button type="reset" class="clear_search"><i class="bi bi-x"></i></button>
+                <div class="remove_search_area"><i class="bi bi-caret-up"></i></i></div>
+            </form>
+        </div>
+        <div class="pull_right">
+            <button type="submit" class="active search_icon"><i class="bi bi-search"></i></button>
+            <div class="create_icon">+</div>
+            <div class="editors_choice"><i class="bi bi-bookmark-fill"></i></i></div>
+            <div class="user_icon"><i class="bi bi-person-fill"></i></div>
+        </div>
+        <div class="authentication">
+            {% if current_user.is_authenticated %}
+            <div class="profile"><a href="/mingle/profile/{{ current_user.username }}"><span>{{ current_user.username }}</span><span><i class="bi bi-person-check"></i></span></a></div>
+            <div class="logout"><a href="/mingle/logout"><span>Logout</span><span><i class="bi bi-box-arrow-in-left"></i></span></a></div>
+            {% else %}
+            <div class="login"><a href="/mingle/login"><span>Login</span><span><i class="bi bi-box-arrow-in-right"></i></span></a></div>
+            <div class="signup"><a href="/mingle/sign-up"><span>Signup</span><span><i class="bi bi-question-lg"></i></span></a></div>
+            {% endif %}
+        </div>
+        <div class="create_options">
+            <div class="create_tale"><a href="/mingle/createtale"><span>Create Tale</span><span><i class="bi bi-book-half"></i></span></a></div>
+            <div class="create_video"><a href="#"><span>Create video</span><span><i class="bi bi-play-btn-fill"></i></span></a></div>
+            <div class="create_teaser"><a href="#"><span>Create teaser</span><span><i class="bi bi-play-circle-fill"></i></span></a></div>
+        </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash_message {{ category }}">
+                <p>{{ message }}</p>
+                <i class="bi bi-x"></i>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        <nav class="navbar">
+            <ul>
+                <li class="nav_item hovered">
+                    <a href="/mingle">
+                        <span class="icon">
+                            <i class="bi bi-house-door"></i>
+                        </span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+
+                <li class="nav_item">
+                    <a href="#">
+                        <span class="icon">
+                            <i class="bi bi-people"></i>
+                        </span>
+                        <span class="title">Minglers</span>
+                    </a>
+                </li>
+
+                <li class="nav_item">
+                    <a href="#">
+                        <span class="icon">
+                            <i class="bi bi-chat-dots"></i>
+                        </span>
+                        <span class="title">Messages</span>
+                    </a>
+                </li>
+
+                <li class="nav_item">
+                    <a href="#">
+                        <span class="icon">
+                            <i class="bi bi-question-circle"></i>
+                        </span>
+                        <span class="title">Help</span>
+                    </a>
+                </li>
+
+                <li class="nav_item">
+                    <a href="#">
+                        <span class="icon">
+                            <i class="bi bi-gear"></i>
+                        </span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+
+                <li class="nav_item">
+                    <a href="#">
+                        <span class="icon">
+                            <i class="bi bi-box-arrow-left"></i>
+                        </span>
+                        <span class="title">Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <div class="content">
+
+            <div class="videoloader">
+            
+                <div class="thumbsImageContainerloader">
+                    <div class="aspectRatio16_9loader"></div>
+                </div>
+    
+                <div class="galeryDetailsContentloader clearfixloader">
+                    <!-- <div class="clearfix"></div> -->
+                    <div class="pull-leftloader channelPhotoDescriptionloader">
+                        <div class="creator_iconloader">
+                        </div>
+                        <strong class="titleloader"></strong>
+                        <div class="clearfixloader">
+                        </div>
+                        <div class="galeryDetailsloader pull-leftloader">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+
+            <div class="videoloader">
+            
+                <div class="thumbsImageContainerloader">
+                    <div class="aspectRatio16_9loader"></div>
+                </div>
+    
+                <div class="galeryDetailsContentloader clearfixloader">
+                    <!-- <div class="clearfix"></div> -->
+                    <div class="pull-leftloader channelPhotoDescriptionloader">
+                        <div class="creator_iconloader">
+                        </div>
+                        <strong class="titleloader"></strong>
+                        <div class="clearfixloader">
+                        </div>
+                        <div class="galeryDetailsloader pull-leftloader">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="videoloader">
+            
+                <div class="thumbsImageContainerloader">
+                    <div class="aspectRatio16_9loader"></div>
+                </div>
+    
+                <div class="galeryDetailsContentloader clearfixloader">
+                    <!-- <div class="clearfix"></div> -->
+                    <div class="pull-leftloader channelPhotoDescriptionloader">
+                        <div class="creator_iconloader">
+                        </div>
+                        <strong class="titleloader"></strong>
+                        <div class="clearfixloader">
+                        </div>
+                        <div class="galeryDetailsloader pull-leftloader">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="videoloader">
+            
+                <div class="thumbsImageContainerloader">
+                    <div class="aspectRatio16_9loader"></div>
+                </div>
+    
+                <div class="galeryDetailsContentloader clearfixloader">
+                    <!-- <div class="clearfix"></div> -->
+                    <div class="pull-leftloader channelPhotoDescriptionloader">
+                        <div class="creator_iconloader">
+                        </div>
+                        <strong class="titleloader"></strong>
+                        <div class="clearfixloader">
+                        </div>
+                        <div class="galeryDetailsloader pull-leftloader">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="videoloader">
+            
+                <div class="thumbsImageContainerloader">
+                    <div class="aspectRatio16_9loader"></div>
+                </div>
+    
+                <div class="galeryDetailsContentloader clearfixloader">
+                    <!-- <div class="clearfix"></div> -->
+                    <div class="pull-leftloader channelPhotoDescriptionloader">
+                        <div class="creator_iconloader">
+                        </div>
+                        <strong class="titleloader"></strong>
+                        <div class="clearfixloader">
+                        </div>
+                        <div class="galeryDetailsloader pull-leftloader">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="videoloader">
+            
+                <div class="thumbsImageContainerloader">
+                    <div class="aspectRatio16_9loader"></div>
+                </div>
+    
+                <div class="galeryDetailsContentloader clearfixloader">
+                    <!-- <div class="clearfix"></div> -->
+                    <div class="pull-leftloader channelPhotoDescriptionloader">
+                        <div class="creator_iconloader">
+                        </div>
+                        <strong class="titleloader"></strong>
+                        <div class="clearfixloader">
+                        </div>
+                        <div class="galeryDetailsloader pull-leftloader">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="videoloader">
+            
+                <div class="thumbsImageContainerloader">
+                    <div class="aspectRatio16_9loader"></div>
+                </div>
+    
+                <div class="galeryDetailsContentloader clearfixloader">
+                    <!-- <div class="clearfix"></div> -->
+                    <div class="pull-leftloader channelPhotoDescriptionloader">
+                        <div class="creator_iconloader">
+                        </div>
+                        <strong class="titleloader"></strong>
+                        <div class="clearfixloader">
+                        </div>
+                        <div class="galeryDetailsloader pull-leftloader">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="videoloader">
+            
+                <div class="thumbsImageContainerloader">
+                    <div class="aspectRatio16_9loader"></div>
+                </div>
+    
+                <div class="galeryDetailsContentloader clearfixloader">
+                    <!-- <div class="clearfix"></div> -->
+                    <div class="pull-leftloader channelPhotoDescriptionloader">
+                        <div class="creator_iconloader">
+                        </div>
+                        <strong class="titleloader"></strong>
+                        <div class="clearfixloader">
+                        </div>
+                        <div class="galeryDetailsloader pull-leftloader">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="videoloader">
+            
+                <div class="thumbsImageContainerloader">
+                    <div class="aspectRatio16_9loader"></div>
+                </div>
+    
+                <div class="galeryDetailsContentloader clearfixloader">
+                    <!-- <div class="clearfix"></div> -->
+                    <div class="pull-leftloader channelPhotoDescriptionloader">
+                        <div class="creator_iconloader">
+                        </div>
+                        <strong class="titleloader"></strong>
+                        <div class="clearfixloader">
+                        </div>
+                        <div class="galeryDetailsloader pull-leftloader">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="videoloader">
+            
+                <div class="thumbsImageContainerloader">
+                    <div class="aspectRatio16_9loader"></div>
+                </div>
+    
+                <div class="galeryDetailsContentloader clearfixloader">
+                    <!-- <div class="clearfix"></div> -->
+                    <div class="pull-leftloader channelPhotoDescriptionloader">
+                        <div class="creator_iconloader">
+                        </div>
+                        <strong class="titleloader"></strong>
+                        <div class="clearfixloader">
+                        </div>
+                        <div class="galeryDetailsloader pull-leftloader">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="videoloader">
+            
+                <div class="thumbsImageContainerloader">
+                    <div class="aspectRatio16_9loader"></div>
+                </div>
+    
+                <div class="galeryDetailsContentloader clearfixloader">
+                    <!-- <div class="clearfix"></div> -->
+                    <div class="pull-leftloader channelPhotoDescriptionloader">
+                        <div class="creator_iconloader">
+                        </div>
+                        <strong class="titleloader"></strong>
+                        <div class="clearfixloader">
+                        </div>
+                        <div class="galeryDetailsloader pull-leftloader">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="videoloader">
+            
+                <div class="thumbsImageContainerloader">
+                    <div class="aspectRatio16_9loader"></div>
+                </div>
+    
+                <div class="galeryDetailsContentloader clearfixloader">
+                    <!-- <div class="clearfix"></div> -->
+                    <div class="pull-leftloader channelPhotoDescriptionloader">
+                        <div class="creator_iconloader">
+                        </div>
+                        <strong class="titleloader"></strong>
+                        <div class="clearfixloader">
+                        </div>
+                        <div class="galeryDetailsloader pull-leftloader">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        // Function to convert ISO date string to human-readable relative time
+        function formatRelativeTime(isoDate) {
+            // Create a new Date object from the ISO date string
+            var date = new Date(isoDate);
+
+            // Get the current time in milliseconds
+            var now = new Date().getTime();
+
+            // Get the time difference in milliseconds
+            var diff = now - date.getTime();
+
+            // Calculate the difference in various time units
+            var seconds = Math.floor(diff / 1000);
+            var minutes = Math.floor(seconds / 60);
+            var hours = Math.floor(minutes / 60);
+            var days = Math.floor(hours / 24);
+            var months = Math.floor(days / 30);
+            var years = Math.floor(months / 12);
+
+            // Format the result based on the time difference
+            if (years > 0) {
+                return years + (years === 1 ? " year ago" : " years ago");
+            } else if (months > 0) {
+                return months + (months === 1 ? " month ago" : " months ago");
+            } else if (days > 0) {
+                return days + (days === 1 ? " day ago" : " days ago");
+            } else if (hours > 0) {
+                return hours + (hours === 1 ? " hour ago" : " hours ago");
+            } else if (minutes > 0) {
+                return minutes + (minutes === 1 ? " minute ago" : " minutes ago");
+            } else {
+                return "Just now";
+            }
+        }
+
+    fetch('http://127.0.0.1:5001/api/v1/tales/')
+    .then(response => response.json())
+    .then(data => {
+        if (data.length > 0) {
+            $("main").empty();
+            $("main").append(`<div class="content"></div>`);
+            data.forEach(tale => {
+                $(".content").append(`
+                <div class="tale">
+                <div class="galeryDetailsContent clearfix">
+                    <!-- <div class="clearfix"></div> -->
+                    <div class="pull-left channelPhotoDescription">
+                        <div class="creator_icon">
+                            <a href="#">
+                                <i class="bi bi-person-fill"></i>
+                            </a>
+                        </div>
+                        <strong class="title">${tale.title}</strong>
+                        <div class="videoChannel pull-left">
+                            <a href="/mingle/profile/${tale.user_username}">${tale.user_username}</a>
+                        </div>
+                        <div class="galeryDetails pull-left">
+                            <time datetime="2024-05-03 13:24:51" class="videoHumanTime pull-right">
+                                <i class="bi bi-alarm"></i>${formatRelativeTime(tale.created_at)}</time>
+                            <div class="videoViews">
+                                <i class="bi bi-eye"></i>
+                                <span itemprop="interactionCount">No views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="thumbsImageContainer">
+                    <div class="aspectRatio16_9">${tale.content}</div>
+                </div>
+            </div>
+                `);
+        });
+        }
+    });
+    </script>
+    
+</body>
+</html>
