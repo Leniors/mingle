@@ -380,7 +380,7 @@
             var now = new Date().getTime();
 
             // Get the time difference in milliseconds
-            var diff = now - date.getTime();
+            var diff = (now - date.getTime()) - 10800;
 
             // Calculate the difference in various time units
             var seconds = Math.floor(diff / 1000);
