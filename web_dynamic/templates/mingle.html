@@ -370,7 +370,6 @@
     </main>
 
     <script>
-
         function formatRelativeTime(datetimeString) {
             // Convert datetimeString to a JavaScript Date object
             const dt = new Date(datetimeString);
@@ -379,9 +378,7 @@
             const now = new Date();
 
             // Calculate the time difference in milliseconds
-	    console.log(now -dt);
-            const delta = (now - dt) - 10800;
-	    console.log(delta);
+            const delta = now - dt;
 
             // Define time intervals in milliseconds
             const minute = 60 * 1000;
@@ -412,45 +409,46 @@
         }
 
         fetch('http://web-01.leeroynyanchwa.tech/api/v1/tales/')
-        .then(response => response.json())
-        .then(data => {
-            if (data.length > 0) {
-                $("main").empty();
-                $("main").append(`<div class="content"></div>`);
-                data.forEach(tale => {
-                    $(".content").append(`
-                    <div class="tale">
-                    <div class="galeryDetailsContent clearfix">
-                        <!-- <div class="clearfix"></div> -->
-                        <div class="pull-left channelPhotoDescription">
-                            <div class="creator_icon">
-                                <a href="#">
-                                    <i class="bi bi-person-fill"></i>
-                                </a>
-                            </div>
-                            <strong class="title">${tale.title}</strong>
-                            <div class="videoChannel pull-left">
-                                <a href="/mingle/profile/${tale.user_username}">${tale.user_username}</a>
-                            </div>
-                            <div class="galeryDetails pull-left">
-                                <time datetime="2024-05-03 13:24:51" class="videoHumanTime pull-right">
-                                    <i class="bi bi-alarm"></i>${formatRelativeTime(tale.created_at)}</time>
-                                <div class="videoViews">
-                                    <i class="bi bi-eye"></i>
-                                    <span itemprop="interactionCount">No views</span>
+            .then(response => response.json())
+            .then(data => {
+                if (data.length > 0) {
+                    $("main").empty();
+                    $("main").append(`<div class="content"></div>`);
+                    data.forEach(tale => {
+                        const userTime = new Date(tale.created_at).toLocaleString(undefined, { timeZone: 'EAT' });
+                        $(".content").append(`
+                        <div class="tale">
+                        <div class="galeryDetailsContent clearfix">
+                            <!-- <div class="clearfix"></div> -->
+                            <div class="pull-left channelPhotoDescription">
+                                <div class="creator_icon">
+                                    <a href="#">
+                                        <i class="bi bi-person-fill"></i>
+                                    </a>
+                                </div>
+                                <strong class="title">${tale.title}</strong>
+                                <div class="videoChannel pull-left">
+                                    <a href="/mingle/profile/${tale.user_username}">${tale.user_username}</a>
+                                </div>
+                                <div class="galeryDetails pull-left">
+                                    <time datetime="2024-05-03 13:24:51" class="videoHumanTime pull-right">
+                                        <i class="bi bi-alarm"></i>${formatRelativeTime(tale.created_at)} (${userTime})</time>
+                                    <div class="videoViews">
+                                        <i class="bi bi-eye"></i>
+                                        <span itemprop="interactionCount">No views</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="thumbsImageContainer">
+                            <div class="aspectRatio16_9">${tale.content}</div>
+                        </div>
                     </div>
-                    
-                    <div class="thumbsImageContainer">
-                        <div class="aspectRatio16_9">${tale.content}</div>
-                    </div>
-                </div>
-                    `);
+                        `);
+                });
+                }
             });
-            }
-        });
     </script>
     
 </body>

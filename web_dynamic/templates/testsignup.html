@@ -9,50 +9,88 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <body>
     
-    <div class="sign_up_container">
-        <p class="title">Create account</p>
-        <form action="" method="POST" class="sign_up_form">
-            {{ form.hidden_tag() }}
-            <div class="form">
-                <div class="email inputBox">
-                    {{ form.email }}
-                    <i>Email</i>
-                </div>
-                <div class="username inputBox">
-                    {{ form.username }}
-                    <i>Username</i>
-                </div>
-                <div class="password inputBox">
-                    {{ form.password }}
-                    <i>Password</i>
-                    <i class="see_password"><i class="bi bi-eye-fill"></i></i>
-                </div>
-                <div class="confirm_password inputBox">
-                    {{ form.confirm_password }}
-                    <i>Confirm Password</i>
-                </div>
-                <div class="submit_btn inputBox">
-                    {{ form.submit }}
-                </div>
-                <div class="links">
-                    Have an account?<a href="/mingle/login">&emsp;Signin</a>
-                </div>
-            </div>
-        </form>
-    </div>
-
     <script>
-    
-        $(".see_password").click(() => {
-            $(".see_password i").toggleClass("bi-eye-slash-fill");
-            if ($("#password").prop("type") === 'password') {
-                console.log("True");
-                $("#password").prop("type", "text");
+
+        function formatRelativeTime(datetimeString) {
+            // Convert datetimeString to a JavaScript Date object
+            const dt = new Date(datetimeString);
+
+            // Get the current date and time
+            const now = new Date();
+
+            // Calculate the time difference in milliseconds
+	    console.log(now -dt);
+            const delta = (now - dt) - 10800;
+	    console.log(delta);
+
+            // Define time intervals in milliseconds
+            const minute = 60 * 1000;
+            const hour = 60 * minute;
+            const day = 24 * hour;
+            const month = 30 * day;
+            const year = 365 * day;
+
+            // Determine the appropriate time interval
+            if (delta > year) {
+                const years = Math.floor(delta / year);
+                return `${years} year${years > 1 ? 's' : ''} ago`;
+            } else if (delta > month) {
+                const months = Math.floor(delta / month);
+                return `${months} month${months > 1 ? 's' : ''} ago`;
+            } else if (delta > day) {
+                const days = Math.floor(delta / day);
+                return `${days} day${days > 1 ? 's' : ''} ago`;
+            } else if (delta > hour) {
+                const hours = Math.floor(delta / hour);
+                return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+            } else if (delta > minute) {
+                const minutes = Math.floor(delta / minute);
+                return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
             } else {
-                $("#password").prop("type", "password") = 'password';
+                return 'Just now';
             }
         }
-        );
+
+        fetch('http://web-01.leeroynyanchwa.tech/api/v1/tales/')
+        .then(response => response.json())
+        .then(data => {
+            if (data.length > 0) {
+                $("main").empty();
+                $("main").append(`<div class="content"></div>`);
+                data.forEach(tale => {
+                    $(".content").append(`
+                    <div class="tale">
+                    <div class="galeryDetailsContent clearfix">
+                        <!-- <div class="clearfix"></div> -->
+                        <div class="pull-left channelPhotoDescription">
+                            <div class="creator_icon">
+                                <a href="#">
+                                    <i class="bi bi-person-fill"></i>
+                                </a>
+                            </div>
+                            <strong class="title">${tale.title}</strong>
+                            <div class="videoChannel pull-left">
+                                <a href="/mingle/profile/${tale.user_username}">${tale.user_username}</a>
+                            </div>
+                            <div class="galeryDetails pull-left">
+                                <time datetime="2024-05-03 13:24:51" class="videoHumanTime pull-right">
+                                    <i class="bi bi-alarm"></i>${formatRelativeTime(tale.created_at)}</time>
+                                <div class="videoViews">
+                                    <i class="bi bi-eye"></i>
+                                    <span itemprop="interactionCount">No views</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="thumbsImageContainer">
+                        <div class="aspectRatio16_9">${tale.content}</div>
+                    </div>
+                </div>
+                    `);
+            });
+            }
+        });
     </script>
 </body>
 </html>
