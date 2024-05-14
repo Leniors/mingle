@@ -6,7 +6,7 @@ def time_ago_in_words(dt):
     """
     Returns the time difference in a human-readable format
     """
-    now = datetime.utcnow()
+    now = datetime.now()
     delta = now - dt
 
     if delta.days > 365:
