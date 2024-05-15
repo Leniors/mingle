@@ -372,7 +372,7 @@
     <script>
         function formatRelativeTime(datetimeString) {
             const dt = new Date(datetimeString);
-            const now = new Date();
+            const now = new Date(new Date().toLocaleString(undefined, { timeZone: 'UTC' }));
             const delta = now - dt;
 
             const minute = 60 * 1000;

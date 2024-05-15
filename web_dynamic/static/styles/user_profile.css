@@ -67,8 +67,9 @@ main.active {
 }
 .user_profile .user_content {
     border-radius: 20px;
-    /* background: red; */
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
 }
 .user_profile .user_info .change_password {
     height: 100px;
