@@ -19,7 +19,7 @@
         <div class="menu_icon"><i class="bi bi-list"></i></div>
         <a class="logo" href="#">
             <i class="bi bi-apple"></i>
-            <div class="title">Sigisty</div>
+            <div class="title">Mingle</div>
         </a>
         <div class="search_area">
             <form action="">
@@ -408,7 +408,7 @@
             }
         }
 
-        fetch('http://web-01.leeroynyanchwa.tech/api/v1/tales/')
+        fetch('http://127.0.0.1:5001/api/v1/tales/')
             .then(response => response.json())
             .then(data => {
                 if (data.length > 0) {
