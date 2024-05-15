@@ -371,9 +371,13 @@
 
     <script>
         function formatRelativeTime(datetimeString) {
+            console.log("from tale", datetimeString);
             const dt = new Date(datetimeString);
+            console.log("tale time", dt);
             const now = new Date(new Date().toLocaleString(undefined, { timeZone: 'UTC' }));
+            console.log("sahii", now);
             const delta = now - dt;
+            console.log("difrence", delta);
 
             const minute = 60 * 1000;
             const hour = 60 * minute;
@@ -408,7 +412,6 @@
                     $("main").empty();
                     $("main").append(`<div class="content"></div>`);
                     data.forEach(tale => {
-                        const userTime = new Date(tale.created_at).toLocaleString(undefined, { timeZone: 'UTC' });
                         $(".content").append(`
                         <div class="tale">
                         <div class="galeryDetailsContent clearfix">
