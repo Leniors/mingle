@@ -371,23 +371,16 @@
 
     <script>
         function formatRelativeTime(datetimeString) {
-            // Convert datetimeString to a JavaScript Date object
             const dt = new Date(datetimeString);
-
-            // Get the current date and time
             const now = new Date();
-
-            // Calculate the time difference in milliseconds
             const delta = now - dt;
 
-            // Define time intervals in milliseconds
             const minute = 60 * 1000;
             const hour = 60 * minute;
             const day = 24 * hour;
             const month = 30 * day;
             const year = 365 * day;
 
-            // Determine the appropriate time interval
             if (delta > year) {
                 const years = Math.floor(delta / year);
                 return `${years} year${years > 1 ? 's' : ''} ago`;
@@ -415,6 +408,7 @@
                     $("main").empty();
                     $("main").append(`<div class="content"></div>`);
                     data.forEach(tale => {
+                        const userTime = new Date(tale.created_at).toLocaleString(undefined, { timeZone: 'UTC' });
                         $(".content").append(`
                         <div class="tale">
                         <div class="galeryDetailsContent clearfix">
