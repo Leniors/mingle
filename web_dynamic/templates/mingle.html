@@ -370,14 +370,11 @@
     </main>
 
     <script>
+        let print = 0;
         function formatRelativeTime(datetimeString) {
-            console.log("from tale", datetimeString);
             const dt = new Date(datetimeString);
-            console.log("tale time", dt);
             const now = new Date(new Date().toLocaleString(undefined, { timeZone: 'UTC' }));
-            console.log("sahii", now);
             const delta = now - dt;
-            console.log("difrence", delta);
 
             const minute = 60 * 1000;
             const hour = 60 * minute;
