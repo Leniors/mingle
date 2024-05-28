@@ -7,7 +7,6 @@ from models import storage
 from models.tale import Tale
 from api.v1.views import app_views
 
-
 @app_views.route('/tales', methods=['GET'], strict_slashes=False)
 def get_tales():
     tales = storage.all(Tale)
@@ -15,6 +14,15 @@ def get_tales():
         print(tale.user.username)
     print(tales)"""
     return jsonify([tale.to_dict() for tale in tales.values()]), 200
+
+@app_views.route('/tales', methods=['POST'], strict_slashes=False)
+def create_tale():
+    if not request.json:
+        abort(400, description="Not a JSON")
+    data = request.json
+    new_tale = Tale(**data)
+    new_tale.save()
+    return jsonify(new_tale.to_dict()), 201
 
 """
 @app_views.route('/amenities/<amenity_id>', methods=['GET'], strict_slashes=False)
@@ -33,19 +41,6 @@ def delete_amenity(amenity_id):
     storage.delete(amenity)
     storage.save()
     return jsonify({}), 200
-
-
-@app_views.route('/amenities', methods=['POST'], strict_slashes=False)
-def create_amenity():
-    if not request.json:
-        abort(400, description="Not a JSON")
-    if 'name' not in request.json:
-        abort(400, description="Missing name")
-    data = request.json
-    new_amenity = Amenity(**data)
-    new_amenity.save()
-    return jsonify(new_amenity.to_dict()), 201
-
 
 @app_views.route('/amenities/<amenity_id>', methods=['PUT'], strict_slashes=False)
 def update_amenity(amenity_id):

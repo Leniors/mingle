@@ -7,6 +7,7 @@ from flask import render_template, flash, redirect, url_for
 from models import storage
 from models.tale import Tale
 from flask_login import login_required, current_user
+import requests
 
 @app_views.route('/createtale', strict_slashes=False, methods=['GET', 'POST'])
 @login_required
@@ -14,10 +15,14 @@ def create_tale():
     """ create_tale function """
     form = TaleForm()
     if form.validate_on_submit():
-        title = form.title.data
-        content = form.content.data
-        
-        tale = Tale(title=title, content=content, user_username=current_user.username)
-        tale.save()
+        url = "52.91.133.47/api/v1/tales"
+        data = {
+            "title": form.title.data,
+            "content": form.content.data,
+            "user_username": current_user.username
+        }
+        response = requests.post(url, json=data)
+        print(response.status_code)
+        print(response.text)
         return redirect(f"/mingle/profile/{current_user.username}")
     return render_template("create_tale.html", form=form)

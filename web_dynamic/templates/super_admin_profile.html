@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mingle</title>
+    <title>{{ current_user.username }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/navbar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/user_profile.css') }}">

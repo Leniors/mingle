@@ -62,6 +62,8 @@
         top: 65px;
         transition: 0.5s ease;
         overflow: hidden;
+        overflow-y: scroll;
+        scrollbar-width: none;
         border-left: 10px solid #1a1f24;
         background: #1a1f24;
         font-weight: 700;
@@ -84,6 +86,8 @@
         top: 65px;
         transition: 0.5s ease;
         overflow: hidden;
+        scrollbar-width: none;
+        overflow-y: scroll;
         border-left: 10px solid #1a1f24;
         background: #1a1f24;
         font-weight: 700;

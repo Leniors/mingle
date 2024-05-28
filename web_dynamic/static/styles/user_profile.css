@@ -53,6 +53,7 @@ main.active {
     border-radius: 20px;
     margin: 20px 0 20px 0;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     background: whitesmoke;
@@ -72,7 +73,7 @@ main.active {
     flex-wrap: wrap;
 }
 .user_profile .user_info .change_password {
-    height: 100px;
+    /* height: 100px; */
     padding: 5px;
 }
 .user_profile .user_info .change_password ul {
@@ -87,13 +88,13 @@ main.active {
 }
 .user_profile .user_info .change_password ul a {
     width: 100%;
-    height: 35px;
-    line-height: 35px;
     background: aliceblue;
     border-radius: 18px;
     text-decoration: none;
     color: #000;
     font-weight: 500;
+    padding: 10px 5px;
+    margin-bottom: 5px;
 }
 .user_profile .user_info .change_password ul a:hover {
     background: #2f55ff;
