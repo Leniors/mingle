@@ -21,6 +21,7 @@ def create_tale():
         abort(400, description="Not a JSON")
     data = request.json
     new_tale = Tale(**data)
+    print("Tale creeated")
     new_tale.save()
     return jsonify(new_tale.to_dict()), 201
 
