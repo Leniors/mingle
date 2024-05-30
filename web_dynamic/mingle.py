@@ -24,7 +24,7 @@ def load_user(id):
     return storage.get_user_by_id(User, id)
 
 CORS(app, resources={r"/*": {"origins": "*"}})
-app.register_blueprint(app_views, url_prefix="/mingle/")
+app.register_blueprint(app_views)
 
 @app.route('/mingle', strict_slashes=False)
 def mingle():
