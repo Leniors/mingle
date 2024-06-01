@@ -22,7 +22,5 @@ def create_tale():
             "user_username": current_user.username
         }
         response = requests.post(url, json=data)
-        print(response.status_code)
-        print(response.text)
         return redirect(f"/mingle/profile/{current_user.username}")
     return render_template("create_tale.html", form=form)
