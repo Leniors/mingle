@@ -12,3 +12,4 @@ from api.v1.views import app_views
 def get_users():
     users = storage.all(User)
     return jsonify([user.to_dict() for user in users.values()]), 200
+    
