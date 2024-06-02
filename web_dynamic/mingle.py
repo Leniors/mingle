@@ -14,7 +14,7 @@ from logging.handlers import RotatingFileHandler
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'mingle')
+app.config['SECRET_KEY'] = 'mingle'
 app.jinja_env.filters['time_ago_in_words'] = time_ago_in_words
 
 # Setup Flask-Login
@@ -48,18 +48,21 @@ if not app.debug:
 @app.errorhandler(404)
 def not_found_error(error):
     app.logger.error(f'Not found: {error}')
+    storage.rollback()
     return render_template('404.html'), 404
-
-@app.errorhandler(500)
-def internal_error(error):
-    app.logger.error(f'Server error: {error}')
-    return render_template('500.html'), 500
 
 # Routes
 @app.route('/mingle', strict_slashes=False)
 def mingle():
     """ mingle """
     return render_template("mingle.html")
+
+@app.teardown_appcontext
+def teardown_db(exception):
+    """Closes the database again at the end of the request."""
+    if exception:
+        storage.rollback()
+    storage.close()
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=os.environ.get('FLASK_DEBUG', 'True') == 'True')

@@ -97,13 +97,13 @@
     text-overflow: ellipsis;
 }
 
-@media screen and (max-width: 690px) {
+@media screen and (max-width: 695px) {
     main {
         font-family: "Open Sans", sans-serif;
         position: absolute;
         top: 65px;
         right: 0;
-        width: 100vw;
+        width: 100%;
         min-height: calc(100% - 65px);
         transition: 0.5s ease;
     }
@@ -114,7 +114,7 @@
         margin: 5px;    
     }
 }
-@media screen and (min-width: 690px) and (max-width: 710px) {
+@media screen and (min-width: 695px) and (max-width: 710px) {
     main {
         font-family: "Open Sans", sans-serif;
         position: absolute;

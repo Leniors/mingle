@@ -9,6 +9,7 @@ body {
     font-family: "Lato", sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
+    scrollbar-width: none;
 }
 header {
     position: relative;
@@ -24,6 +25,10 @@ header {
     align-items: center;
     justify-content: space-between;
     background: #fff;
+    transition: top 0.3s;
+}
+header.hidden {
+    top: -66px;
 }
 header .logo {
     text-decoration: none;

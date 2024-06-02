@@ -71,6 +71,9 @@ class DBStorage:
         """call remove() method on the private session attribute"""
         self.__session.remove()
         
+    def rollback(self):
+        self.__session.rollback()
+        
     def get(self, cls, id):
         """get one object from a class"""
         obj = self.__session.query(cls).filter_by(id=id).first()
