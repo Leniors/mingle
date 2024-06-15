@@ -50,6 +50,8 @@ header .logo i {
 }
 header .title {
     color: #000000b3;
+    /* color: #2D0C57; */
+    letter-spacing: 1px;
     line-height: 40px;
     display: inline-block;
     height: 40px;

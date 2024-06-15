@@ -1,11 +1,18 @@
+.tale_content {
+    margin: auto;
+    width: 100%;
+    max-width: 500px;
+    padding-top: 3px;
+}
 .tale {
     position: relative;
-    width: 24%;
-    margin: 5px;
+    width: 98%;
+    margin: 4px auto;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     border: 2px solid;
+    background-color: #fff;
 }
 .tale .galeryDetailsContent {
     display: flex;
@@ -97,7 +104,57 @@
     text-overflow: ellipsis;
 }
 
-@media screen and (max-width: 695px) {
+.ad-section {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    width: 40%;
+}
+
+.ad {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.ad h3 {
+    margin: 0 0 10px;
+}
+
+.ad p {
+    margin: 0 0 10px;
+}
+
+.ad img {
+    max-width: 100%;
+    height: auto;
+}
+
+.dancing-text {
+    font-size: 24px;
+    color: #ff5733;
+    animation: dance 1s infinite;
+}
+
+@media screen and (max-width: 800px) {
+    .ad-section {
+        width: 95%;
+        margin: 5px auto;
+    }
+}
+
+@keyframes dance {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+/* @media screen and (max-width: 695px) {
     main {
         font-family: "Open Sans", sans-serif;
         position: absolute;
@@ -147,4 +204,4 @@
         width: 48%;
         margin: 5px;
     }
-}
+} */

@@ -13,14 +13,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../static/scripts/main.js"></script>
-    <style>
-        body {
-            scrollbar-color: red;
-        }
-    </style>
 </head>
 <body>
-    <header>
+    <header class="header">
         <div class="menu_icon"><i class="bi bi-list"></i></div>
         <a class="logo" href="#">
             <i class="bi bi-apple"></i>
@@ -425,12 +420,33 @@
             .then(data => {
                 if (data.length > 0) {
                     $("main").empty();
-                    $("main").append(`<div class="content"></div>`);
-                    data.forEach(tale => {
-                        $(".content").append(`
+                    $("main").append(`<div class="tale_content"></div>`);
+                    if (window.innerWidth >= 800) {
+                        $("main").css('display', 'flex');
+                        $("main").append(`
+                        <div class="ad-section">
+                            <div class="ad">
+                                <h3 class="dancing-text">Call 0725495595 to add</h3>
+                                <h3 class="dancing-text">Ads Here</h3>
+                            </div>
+                        </div>
+                        `);
+                    }
+                    data.forEach((tale, index) => {
+                        if (window.innerWidth < 800 && index > 0 && index % 4 === 0) {
+                            $(".tale_content").append(`
+                            <div class="ad-section">
+                                <div class="ad">
+                                    <h3 class="dancing-text">Call 0725495595 to add</h3>
+                                    <h3 class="dancing-text">Ads Here</h3>
+                                </div>
+                            </div>
+                            `);
+                            $("ad-section").css("width", "100%")
+                        }
+                        $(".tale_content").append(`
                         <div class="tale">
                         <div class="galeryDetailsContent clearfix">
-                            <!-- <div class="clearfix"></div> -->
                             <div class="pull-left channelPhotoDescription">
                                 <div class="creator_icon">
                                     <a href="#">
@@ -458,7 +474,7 @@
                         </div>
                     </div>
                         `);
-                });
+                    });
                 }
             });
     </script>
