@@ -104,7 +104,7 @@
     text-overflow: ellipsis;
 }
 
-.ad-section {
+.promotion-section {
     background-color: #f4f4f4;
     padding: 10px;
     border: 1px solid #ccc;
@@ -112,7 +112,7 @@
     width: 40%;
 }
 
-.ad {
+.promotion {
     margin: 10px 0;
     padding: 10px;
     border: 1px solid #ddd;
@@ -120,15 +120,15 @@
     background-color: #fff;
 }
 
-.ad h3 {
+.promotion h3 {
     margin: 0 0 10px;
 }
 
-.ad p {
+.promotion p {
     margin: 0 0 10px;
 }
 
-.ad img {
+.promotion img {
     max-width: 100%;
     height: auto;
 }
@@ -140,7 +140,7 @@
 }
 
 @media screen and (max-width: 800px) {
-    .ad-section {
+    .promotion-section {
         width: 95%;
         margin: 5px auto;
     }

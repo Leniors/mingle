@@ -424,8 +424,8 @@
                     if (window.innerWidth > 800) {
                         $("main").css('display', 'flex');
                         $("main").append(`
-                        <div class="ad-section">
-                            <div class="ad">
+                        <div class="promotion-section">
+                            <div class="promotion">
                                 <h3 class="dancing-text">Call 0725495595 to add</h3>
                                 <h3 class="dancing-text">Ads Here</h3>
                             </div>
@@ -435,14 +435,14 @@
                     data.forEach((tale, index) => {
                         if (window.innerWidth <= 800 && index > 0 && index % 4 === 0) {
                             $(".tale_content").append(`
-                            <div class="ad-section">
-                                <div class="ad">
+                            <div class="promotion-section">
+                                <div class="promotion">
                                     <h3 class="dancing-text">Call 0725495595 to add</h3>
                                     <h3 class="dancing-text">Ads Here</h3>
                                 </div>
                             </div>
                             `);
-                            $("ad-section").css("width", "100%")
+                            $("ads-section").css("width", "100%")
                         }
                         $(".tale_content").append(`
                         <div class="tale">
