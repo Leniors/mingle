@@ -421,7 +421,7 @@
                 if (data.length > 0) {
                     $("main").empty();
                     $("main").append(`<div class="tale_content"></div>`);
-                    if (window.innerWidth >= 800) {
+                    if (window.innerWidth > 800) {
                         $("main").css('display', 'flex');
                         $("main").append(`
                         <div class="ad-section">
@@ -433,7 +433,7 @@
                         `);
                     }
                     data.forEach((tale, index) => {
-                        if (window.innerWidth < 800 && index > 0 && index % 4 === 0) {
+                        if (window.innerWidth <= 800 && index > 0 && index % 4 === 0) {
                             $(".tale_content").append(`
                             <div class="ad-section">
                                 <div class="ad">
