@@ -23,4 +23,4 @@ def not_found(error):
 if __name__ == "__main__":
     host = os.environ.get('HBNB_API_HOST', '0.0.0.0')
     port = int(os.environ.get('HBNB_API_PORT', 5001))
-    app.run(host=host, port=port, threaded=True)
+    app.run(host=host, port=port, threaded=True, debug=os.environ.get('FLASK_DEBUG', 'True') == 'True')
