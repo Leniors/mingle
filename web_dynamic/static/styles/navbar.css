@@ -1,0 +1,121 @@
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.navbar ul {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+}
+.navbar ul li {
+    position: relative;
+    width: calc(100% - 5px);
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navbar ul li a {
+    position: relative;
+    display: block;
+    display: flex;
+    text-decoration: none;
+    color: #fff;
+    width: calc(100% - 5px);
+    margin-right: 5px;
+}
+.navbar ul li.hovered a {
+    color: #000;
+}
+.navbar ul li.hovered {
+    background: #fff;
+}
+.navbar ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.navbar ul li a .icon i {
+    font-size: 1.75rem;
+}
+.navbar ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 695px) {
+    .navbar {
+        position: fixed;
+        width: 200px;
+        height: 100%;
+        left: -200px;
+        top: 65px;
+        transition: 0.5s ease;
+        overflow: hidden;
+        overflow-y: scroll;
+        scrollbar-width: none;
+        border-left: 10px solid #1a1f24;
+        background: #1a1f24;
+        font-weight: 700;
+        z-index: 1000;
+    }
+    .navbar.active {
+        width: 200px;
+        left: 0;
+    }
+    .navbar ul li {
+        border-radius: 30px;
+    }
+}
+@media screen and (min-width: 695px) {
+    .navbar {
+        position: fixed;
+        width: 80px;
+        height: 100%;
+        left: 0;
+        top: 65px;
+        transition: 0.5s ease;
+        overflow: hidden;
+        scrollbar-width: none;
+        overflow-y: scroll;
+        border-left: 10px solid #1a1f24;
+        background: #1a1f24;
+        font-weight: 700;
+        z-index: 1000;
+    }
+    .navbar.active {
+        width: 200px;
+    }
+    .navbar ul li.hovered a::before {
+        content: '';
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        right: -10px;
+        top: -50px;
+        border-radius: 50%;
+        box-shadow: 30px 35px 0 7px white;
+        pointer-events: none;
+    }
+    .navbar ul li.hovered a::after {
+        content: '';
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        right: -10px;
+        bottom: -50px;
+        border-radius: 50%;
+        box-shadow: 30px -35px 0 7px white;
+        pointer-events: none;
+    }
+}
