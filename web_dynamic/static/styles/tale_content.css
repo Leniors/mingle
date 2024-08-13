@@ -1,0 +1,184 @@
+.tale_content {
+    margin: auto;
+    width: 100%;
+    padding-top: 3px;
+    margin-bottom: 50px;
+    /* max-width: 600px; */
+}
+.tale {
+    position: relative;
+    width: 98%;
+    margin: 4px auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid;
+    background-color: #fff;
+    max-width: 600px;
+}
+.tale .galeryDetailsContent {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 0;
+    gap: 5px;
+    border-top-right-radius:10px;
+    border-top-left-radius: 10px;
+}
+.tale .galeryDetailsContent .channelPhotoDescription {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 10fr;
+    gap: 5px;
+    padding: 5px 3px 10px;
+    margin: 3px;
+    border-top-right-radius:10px;
+    border-top-left-radius: 10px;
+    border-bottom: 1px solid;
+}
+.tale .galeryDetailsContent .channelPhotoDescription .creator_icon {
+    grid-column: span 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tale .galeryDetailsContent .channelPhotoDescription .creator_icon a {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 2.2rem;
+    border-radius: 50%;
+    color: #fff;
+    background: #000;
+    border: 1px solid;
+}
+.tale .galeryDetailsContent .channelPhotoDescription .title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    max-height: 3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 3px;
+    grid-column: span 3;
+    align-self: start;
+}
+.tale .videoChannel {
+    grid-column: span 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tale .videoChannel a {
+    text-decoration: none;
+    font-size: small;
+    font-weight: 900;
+    color: #000;
+}
+.tale .galeryDetailsContent .channelPhotoDescription .galeryDetails {
+    display: flex;
+    gap: 15px;
+    font-weight: 500;
+    font-size: small;
+}
+.tale .thumbsImageContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin: 0 4px;
+}
+.tale .aspectRatio16_9 {
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media screen and (min-width: 600px) {
+    .tale_content {
+        position: absolute;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 875px) {
+    .tale_content {
+        position: absolute;
+        width: 55%;
+        left: 0;
+    }
+}
+
+@keyframes dance {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+/* @media screen and (max-width: 695px) {
+    main {
+        font-family: "Open Sans", sans-serif;
+        position: absolute;
+        top: 65px;
+        right: 0;
+        width: 100%;
+        min-height: calc(100% - 65px);
+        transition: 0.5s ease;
+    }
+    
+    .tale {
+        position: relative;
+        width: 100%;
+        margin: 5px;    
+    }
+}
+@media screen and (min-width: 695px) and (max-width: 710px) {
+    main {
+        font-family: "Open Sans", sans-serif;
+        position: absolute;
+        top: 65px;
+        right: 0;
+        width: calc(100% - 80px);
+        min-height: calc(100% - 65px);
+        transition: 0.5s ease;
+    }
+    main.active {
+        width: calc(100% - 200px);
+        .video {
+            position: relative;
+            width: 100%;
+            margin: 5px;
+        }
+    }
+    .tale {
+        position: relative;
+        width: 48%;
+        margin: 5px;
+    }
+}
+@media screen and (min-width: 710px) and (max-width: 1200px) {
+    main.active {
+        width: calc(100% - 200px);
+    }
+    .tale {
+        position: relative;
+        width: 48%;
+        margin: 5px;
+    }
+} */

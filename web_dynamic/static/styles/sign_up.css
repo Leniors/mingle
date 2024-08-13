@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.create_tale {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+}
+.sign_up_container {
+    max-width: 500px;
+    min-width: 320px;
+    width: 48%;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 10px 0;
+}
+.sign_up_container .title {
+    margin: 20px;
+    font-size: 2.4em;
+    font-weight: 600;
+    color: blanchedalmond;
+}
+.sign_up_form {
+    width: 90%;
+    text-align: center;
+}
+.inputBox {
+    position: relative;
+}
+.inputBox input[type="email"] {
+    width: 90%;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin-bottom: 30px;
+    padding: 10px 20px 0;
+    font-size: 1em;
+    color: #000;
+    opacity: 0.7;
+}
+.inputBox input[type="text"] {
+    width: 90%;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin-bottom: 30px;
+    padding: 10px 20px 0;
+    font-size: 1em;
+    color: #000;
+    opacity: 0.7;
+}
+.inputBox input[type="password"] {
+    width: 90%;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin-bottom: 30px;
+    padding: 10px 20px 0;
+    font-size: 1em;
+    opacity: 0.7;
+}
+.inputBox input[type="submit"] {
+    width: 40%;
+    height: 40px;
+    border-radius: 25px;
+    border: none;
+    margin-bottom: 30px;
+    font-size: larger;
+    text-align: center;
+}
+textarea {
+    width: 90%;
+    height: 80px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin-bottom: 30px;
+    padding: 20px 20px 0;
+    font-size: 1em;
+    color: #000;
+    opacity: 0.7;
+    max-height: 250px;
+    resize: vertical;
+}
+.inputBox i {
+    position: absolute;
+    left: 35px;
+    top: 0;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    pointer-events: none;
+}
+.inputBox input:focus ~ i,
+.inputBox input:valid ~ i,
+.inputBox textarea:focus ~ i,
+.inputBox textarea:valid ~ i {
+    top: -15px;
+    font-size: 14px;
+    font-weight: 300;
+}
+.links {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+}
+.links a {
+    text-decoration: none;
+    color: bisque;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+.links a:hover {
+  color: chartreuse;
+}
+
+.inputBox i.see_password {
+    position: absolute;
+    left: 83%;
+    top: 0;
+    width: 40px;
+    height: 50px;
+    border-radius: 45px;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.inputBox i.see_password i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 50px;
+    border-radius: 45px;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: 500;
+    pointer-events: all;
+}
+.inputBox input:focus ~ i.see_password,
+.inputBox input:valid ~ i.see_password {
+    font-size: 18px;
+    top: 0;
+    font-weight: 500;
+    pointer-events: all;
+}
+@media screen and (min-width: 600px) {
+    .create_tale {
+        position: absolute;
+        width: 80%;
+        right: 0;
+    }
+}
+@media screen and (min-width: 875px) {
+    .create_tale {
+        position: absolute;
+        width: calc(100% - 200px);
+        right: 0;
+    }
+}

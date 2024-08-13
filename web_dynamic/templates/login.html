@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="../static/styles/login.css">
+        <link rel="stylesheet" href="../static/styles/flash.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="../static/scripts/main.js"></script>
+    </head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash_message {{ category }}">
+                <p>{{ message }}</p>
+                <i class="bi bi-x"></i>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="login_container">
+        <p class="title">Welcome back</p>
+        <form method="post" class="login_form">
+            {{ form.hidden_tag() }}
+            <div class="input">
+                {{ form.email }}
+                <P><i>Email</i></P>
+            </div>
+            <div class="input">
+                {{ form.password }}
+                <p><i>Password</i></p>
+                <p class="see_password"><i class="bi bi-eye-fill"></i></p>
+            </div>
+            <div class="input">
+                {{ form.submit }}
+            </div>
+            <div class="links">
+                <a href="">Forgot password?</a>
+                <a href="/mingle/sign-up">Signup</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        console.log($("#password").prop("type"));
+        $(".see_password").click(() => {
+            $(".see_password i").toggleClass("bi-eye-slash-fill");
+            if ($("#password").prop("type") === 'password') {
+                console.log("True");
+                $("#password").prop("type", "text");
+            } else {
+                $("#password").prop("type", "password") = 'password';
+            }
+        }
+        );
+    </script>
+</body>
+</html>

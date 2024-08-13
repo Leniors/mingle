@@ -1,0 +1,242 @@
+.profile-card{
+    background-color: white;
+    /* height: 400px; */
+    width: 100%;
+    position: relative;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 13px;
+    align-items: center;
+}
+.profile-card .image{
+    width: 130px;
+    height:130px;
+    border-radius: 12px;
+    z-index: 1;
+}
+.profile-card .image img{
+    width: 120px;
+    height: 120px;
+    border: 2px solid white;
+    border-radius: 50%;
+    object-fit: cover;
+    /* border-bottom-color: blue; */
+}
+.profile-card .about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+}
+.profile-card .about>:first-child{
+    font-size: x-large;
+}
+.profile-card .social-links{
+    margin-top: 17px;
+    display: flex;
+    gap: 17px;
+}
+.profile-card .social-links a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: blue; */
+    border-radius: 50%;
+    padding: 3px;
+
+}
+.profile-card .social-links>:first-child{
+    background-color: rgb(66, 103, 178);
+}
+.profile-card .social-links >:nth-child(2){
+    background-color: rgb(	29, 161, 242);
+}
+.profile-card .social-links >:nth-child(3){
+    background-color:palevioletred;
+}
+.profile-card .social-links >:nth-child(4){
+    background-color: red;
+}
+.profile-card .buttons{
+    display: flex;
+    gap: 20px;
+
+}
+.profile-card .buttons button{
+    margin-top: 12px;
+    background-color: rgb(0, 0, 255,0.8);
+    border: none;
+    color: white;
+    border-radius: 12px;
+    padding: 6px 16px;
+}
+.profile-card .buttons button a {
+    color: #fff;
+    text-decoration: none;
+}
+.profile-card .popularity ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 27px;
+
+}
+.profile-card ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:32px;
+    border-right: 1px solid rgb(0, 0, 0,0.5);
+    padding-right: 6px;
+}
+.profile-card ul li:last-child{
+    border-right: none;
+}
+.profile-card::before{
+    background-color: blue;
+    content: "";
+    position: absolute;
+    height: 120px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    /* z-index: -1; */
+}
+
+
+main {
+    font-family: "Open Sans", sans-serif;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    width: calc(100% - 80px);
+    min-height: calc(100% - 65px);
+    transition: 0.5s ease;
+}
+
+main.active {
+    width: calc(100% - 200px);
+}
+
+.user_profile {
+    text-align: center;
+    margin: 10px;
+}
+.user_profile .user_info {
+    border-radius: 20px;
+    margin: 20px 0 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    /* background: whitesmoke; */
+    padding: 10px 0;
+}
+.user_profile .user_info p {
+    margin: 10px;
+    padding: 5px 0 0 0;
+}
+.user_profile .user_info p span {
+    font-weight: 900;
+}
+.user_profile .user_content {
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+.user_profile .user_info .change_password {
+    padding: 5px;
+}
+.user_profile .user_info .change_password ul {
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color:azure;
+    border-radius: 20px;
+}
+.user_profile .user_info .change_password ul a {
+    width: 100%;
+    background: aliceblue;
+    border-radius: 18px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    padding: 10px 5px;
+    margin-bottom: 5px;
+}
+.user_profile .user_info .change_password ul a:hover {
+    background: #2f55ff;
+    color: #fff;
+}
+.user_profile .user_info .change_password ul a li {
+    list-style-type: none;
+    padding: 0 8px;
+}
+.user_profile .user_info .change_password ul a li:hover {
+    color: #fff;
+}
+@media screen and (max-width: 600px) {
+    main {
+      position: absolute;
+      width: 80%;
+      right: 0;
+    }
+}
+@media screen and (max-width: 875px) {
+    main {
+        position: absolute;
+        width: calc(100% - 200px);
+        right: 0;
+    }
+}
+
+/* @media screen and (max-width: 690px) {
+    main {
+        font-family: "Open Sans", sans-serif;
+        position: absolute;
+        top: 65px;
+        right: 0;
+        width: 100vw;
+        min-height: calc(100% - 65px);
+        transition: 0.5s ease;
+    }
+    
+    .video {
+        position: relative;
+        width: 100%;
+        margin: 5px;    
+    }
+}
+@media screen and (min-width: 690px) and (max-width: 710px) {
+    main {
+        font-family: "Open Sans", sans-serif;
+        position: absolute;
+        top: 65px;
+        right: 0;
+        width: calc(100% - 80px);
+        min-height: calc(100% - 65px);
+        transition: 0.5s ease;
+    }
+    main.active {
+        width: calc(100% - 200px);
+        .video {
+            position: relative;
+            width: 100%;
+            margin: 5px;
+        }
+    }
+}
+@media screen and (min-width: 710px) and (max-width: 1200px) {
+    main.active {
+        width: calc(100% - 200px);
+    }
+} */

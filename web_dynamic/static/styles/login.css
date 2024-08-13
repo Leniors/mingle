@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #FC466B, #3F5EFB);
+    font-family: sans-serif;
+  
+  }
+  .login_container {
+    background: rgba(255, 255, 255, 0.3);
+    min-width: 320px;
+    max-width: 450px;
+    height: 400px;
+    width: 48%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 10px;
+  }
+  .login_container .title {
+    margin: 20px;
+    font-size: 2.5em;
+    font-weight: 600;
+    color: blanchedalmond;
+  }
+  .login_form {
+    width: 100%;
+    text-align: center;
+  }
+  .login_form .input {
+    position: relative;
+  }
+  .input input[type="email"] {
+    width: 90%;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin-bottom: 30px;
+    padding: 10px 25px 0;
+    font-size: 1em;
+    color: #000;
+    opacity: 0.7;
+  }
+  .input input[type="text"] {
+    width: 90%;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin-bottom: 30px;
+    padding: 10px 25px 0;
+    font-size: 1em;
+    opacity: 0.7;
+  }
+  .input input[type="password"] {
+    width: 90%;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin-bottom: 30px;
+    padding: 10px 25px 0;
+    font-size: 1em;
+    opacity: 0.7;
+  }
+  .input input[type="submit"] {
+    width: 40%;
+    height: 40px;
+    border-radius: 25px;
+    border: none;
+    margin-bottom: 30px;
+    font-size: larger;
+    text-align: center;
+  }
+  .input p {
+    position: absolute;
+    left: 50px;
+    top: 0;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    pointer-events: none;
+  }
+  .input input:focus ~ p,
+  .input input:valid ~ p {
+    font-size: small;
+    top: -13px;
+    font-weight: 300;
+  }
+  .input input:focus {
+    opacity: 1;
+  }
+  .login_form .links {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 15px;
+  }
+  .login_form .links a {
+    text-decoration: none;
+    color: #fff;
+  }
+  .login_form .links a:hover {
+    color: chartreuse;
+  }
+  .input p.see_password {
+    position: absolute;
+    left: 83%;
+    top: 0;
+    width: 40px;
+    height: 50px;
+    border-radius: 45px;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    pointer-events: all;
+  }
+  .input input:focus ~ p.see_password,
+  .input input:valid ~ p.see_password {
+    font-size: 18px;
+    top: 0;
+    font-weight: 500;
+    pointer-events: all;
+  }
+  

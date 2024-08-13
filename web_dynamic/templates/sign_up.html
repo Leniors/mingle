@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="../static/styles/sign_up.css">
+    <link rel="stylesheet" href="../static/styles/flash.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../static/scripts/main.js"></script>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash_message {{ category }}">
+                <p>{{ message }}</p>
+                <i class="bi bi-x"></i>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="sign_up_container">
+        <p class="title">Create account</p>
+        <form method="post" method="POST" class="sign_up_form">
+            {{ form.hidden_tag() }}
+            <div class="form">
+                <div class="email inputBox">
+                    {{ form.email }}
+                    <i>Email</i>
+                </div>
+                <div class="username inputBox">
+                    {{ form.username }}
+                    <i>Username</i>
+                </div>
+                <div class="password inputBox">
+                    {{ form.password }}
+                    <i>Password</i>
+                    <i class="see_password"><i class="bi bi-eye-fill"></i></i>
+                </div>
+                <div class="confirm_password inputBox">
+                    {{ form.confirm_password }}
+                    <i>Confirm Password</i>
+                </div>
+                <div class="submit_btn inputBox">
+                    {{ form.submit }}
+                </div>
+                <div class="links">
+                    Have an account?<a href="/mingle/login">&emsp;Signin</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+    
+        $(".see_password").click(() => {
+            $(".see_password i").toggleClass("bi-eye-slash-fill");
+            if ($("#password").prop("type") === 'password') {
+                console.log("True");
+                $("#password").prop("type", "text");
+            } else {
+                $("#password").prop("type", "password") = 'password';
+            }
+        }
+        );
+    </script>
+</body>
+</html>
