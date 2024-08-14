@@ -40,7 +40,7 @@ nav a {
         position: fixed;
         height: 100%;
         width: 20%;
-        top: 0;
+        top: 65px;
         line-height: 50px;
         border-top: none;
         border-right: solid 1px rgba(37, 34, 34, 0.2);

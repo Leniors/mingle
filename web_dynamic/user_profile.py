@@ -11,7 +11,6 @@ from models.user import User
 def user_profile(username):
     """ userprofile function """
     user = storage.get_user_by_username(User, username=username)
-    storage.reload()
     
     if user:
         if user.username == current_user.username or current_user.super_admin:

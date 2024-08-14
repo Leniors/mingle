@@ -13,6 +13,29 @@
     <script src="../static/scripts/main.js"></script>
 <body>
 
+    <header class="header">
+        <a class="logo" href="#">
+            <i class="bi bi-apple"></i>
+            <div class="title">Mingle</div>
+        </a>
+        <div class="pull_right">            
+            <div class="user_icon"><i class="bi bi-three-dots"></i></div>
+        </div>
+        <div class="authentication">
+            {% if current_user.is_authenticated %}
+            <div class="logout"><a href="/mingle/logout"><span>Logout</span><span><i class="bi bi-box-arrow-in-left"></i></span></a></div>
+            {% else %}
+            <div class="login"><a href="/mingle/login"><span>Login</span><span><i class="bi bi-box-arrow-in-right"></i></span></a></div>
+            <div class="signup"><a href="/mingle/sign-up"><span>Signup</span><span><i class="bi bi-question-lg"></i></span></a></div>
+            {% endif %}
+        </div>
+        <div class="create_options">
+            <div class="create_tale"><a href="/mingle/createtale"><span>Create Tale</span><span><i class="bi bi-book-half"></i></span></a></div>
+            <div class="create_video"><a href="#"><span>Create video</span><span><i class="bi bi-play-btn-fill"></i></span></a></div>
+            <div class="create_teaser"><a href="#"><span>Create teaser</span><span><i class="bi bi-play-circle-fill"></i></span></a></div>
+        </div>
+    </header>
+
     <nav>
         <ul>
             <li class="nav_item active">
