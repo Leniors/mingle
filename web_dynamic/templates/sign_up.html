@@ -20,36 +20,38 @@
         {% endfor %}
     {% endif %}
     {% endwith %}
-    <div class="sign_up_container">
-        <p class="title">Create account</p>
-        <form method="post" method="POST" class="sign_up_form">
-            {{ form.hidden_tag() }}
-            <div class="form">
-                <div class="email inputBox">
-                    {{ form.email }}
-                    <i>Email</i>
+    <div class="signup">
+        <div class="sign_up_container">
+            <p class="title">Create account</p>
+            <form method="post" method="POST" class="sign_up_form">
+                {{ form.hidden_tag() }}
+                <div class="form">
+                    <div class="email inputBox">
+                        {{ form.email }}
+                        <i>Email</i>
+                    </div>
+                    <div class="username inputBox">
+                        {{ form.username }}
+                        <i>Username</i>
+                    </div>
+                    <div class="password inputBox">
+                        {{ form.password }}
+                        <i>Password</i>
+                        <i class="see_password"><i class="bi bi-eye-fill"></i></i>
+                    </div>
+                    <div class="confirm_password inputBox">
+                        {{ form.confirm_password }}
+                        <i>Confirm Password</i>
+                    </div>
+                    <div class="submit_btn inputBox">
+                        {{ form.submit }}
+                    </div>
+                    <div class="links">
+                        Have an account?<a href="/mingle/login">&emsp;Signin</a>
+                    </div>
                 </div>
-                <div class="username inputBox">
-                    {{ form.username }}
-                    <i>Username</i>
-                </div>
-                <div class="password inputBox">
-                    {{ form.password }}
-                    <i>Password</i>
-                    <i class="see_password"><i class="bi bi-eye-fill"></i></i>
-                </div>
-                <div class="confirm_password inputBox">
-                    {{ form.confirm_password }}
-                    <i>Confirm Password</i>
-                </div>
-                <div class="submit_btn inputBox">
-                    {{ form.submit }}
-                </div>
-                <div class="links">
-                    Have an account?<a href="/mingle/login">&emsp;Signin</a>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 
     <script>

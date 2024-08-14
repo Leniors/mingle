@@ -70,7 +70,7 @@ $(document).ready(() => {
     // Function to initialize or reinitialize your JavaScript logic
     const initialize = () => {
         // Check if the window width is less than or equal to 695 pixels
-        if (currentWidth <= 695) {
+        if (currentWidth <= 600) {
             // Remove existing scroll event listeners
             window.removeEventListener('scroll', handleScroll);
 
@@ -86,7 +86,6 @@ $(document).ready(() => {
     // Function to handle scroll events
     const handleScroll = () => {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        console.log(currentScroll);
         if (header) { // Ensure header is defined
             if (currentScroll > lastScrollTop) {
                 // Scroll down

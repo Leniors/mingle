@@ -1,10 +1,19 @@
+main {
+    font-family: "Open Sans", sans-serif;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    width: 100%;
+    min-height: calc(100% - 65px);
+    transition: 0.5s ease;
+}
 .users {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 65px;
     margin-bottom: 50px;
+    padding: 5px;
 }
 .user_card {
     background-color: #fff;
@@ -15,6 +24,7 @@
     min-width: 320px;
     max-width: 500px;
     margin: 15px;
+    margin: 5px auto;
 }
 .user_profile_icon {
     text-align: center;

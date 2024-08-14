@@ -80,17 +80,26 @@
                 </a>
             </li>
             <li class="nav_item ">
-                <a href="/market">
-                    <span class="nav_icon"><i class="bi bi-cart-dash"></i></span>
+                <a href="/mingle/books">
+                    <span class="nav_icon"><i class="bi bi-collection"></i></span>
                     <span class="nav_tag">Market</span>
                 </a>
             </li>
-            <li class="nav_item ">
-                <a href="/mingle/profile/{{ current_user.username }}">
-                    <span class="nav_icon"><i class="bi bi-person"></i></span>
-                    <span class="nav_tag">Profile</span>
-                </a>
-            </li>
+            <li class="nav_item">
+    {% if current_user.is_authenticated %}
+        <a href="/mingle/profile/{{ current_user.username }}">
+            <span class="nav_icon"><i class="bi bi-person"></i></span>
+            <span class="nav_tag">Profile</span>
+        </a>
+    {% else %}
+        <a href="/mingle/login">
+            <span class="nav_icon"><i class="bi bi-person"></i></span>
+            <span class="nav_tag">Login</span>
+        </a>
+    {% endif %}
+</li>
+
+
         </ul>
     </nav>
 

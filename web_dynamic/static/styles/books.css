@@ -1,0 +1,23 @@
+main {
+  font-family: "Open Sans", sans-serif;
+  position: absolute;
+  top: 65px;
+  right: 0;
+  width: 100%;
+  min-height: calc(100% - 65px);
+  transition: 0.5s ease;
+}
+@media screen and (min-width: 600px) {
+  main {
+    position: absolute;
+    width: 80%;
+    right: 0;
+  }
+}
+@media screen and (min-width: 875px) {
+  main {
+    position: absolute;
+    width: calc(100% - 200px);
+    right: 0;
+  }
+}

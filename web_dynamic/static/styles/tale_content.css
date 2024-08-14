@@ -14,7 +14,7 @@
     flex-direction: column;
     border: 2px solid;
     background-color: #fff;
-    max-width: 600px;
+    max-width: 500px;
 }
 .tale .galeryDetailsContent {
     display: flex;
@@ -118,7 +118,7 @@
 @media screen and (min-width: 875px) {
     .tale_content {
         position: absolute;
-        width: 55%;
+        width: 100%;
         left: 0;
     }
 }
@@ -130,55 +130,3 @@
     75% { transform: translateX(-10px); }
     100% { transform: translateX(0); }
 }
-
-/* @media screen and (max-width: 695px) {
-    main {
-        font-family: "Open Sans", sans-serif;
-        position: absolute;
-        top: 65px;
-        right: 0;
-        width: 100%;
-        min-height: calc(100% - 65px);
-        transition: 0.5s ease;
-    }
-    
-    .tale {
-        position: relative;
-        width: 100%;
-        margin: 5px;    
-    }
-}
-@media screen and (min-width: 695px) and (max-width: 710px) {
-    main {
-        font-family: "Open Sans", sans-serif;
-        position: absolute;
-        top: 65px;
-        right: 0;
-        width: calc(100% - 80px);
-        min-height: calc(100% - 65px);
-        transition: 0.5s ease;
-    }
-    main.active {
-        width: calc(100% - 200px);
-        .video {
-            position: relative;
-            width: 100%;
-            margin: 5px;
-        }
-    }
-    .tale {
-        position: relative;
-        width: 48%;
-        margin: 5px;
-    }
-}
-@media screen and (min-width: 710px) and (max-width: 1200px) {
-    main.active {
-        width: calc(100% - 200px);
-    }
-    .tale {
-        position: relative;
-        width: 48%;
-        margin: 5px;
-    }
-} */

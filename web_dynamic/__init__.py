@@ -12,3 +12,4 @@ from . import change_password
 from . import make_admin
 from . import create_tale
 from . import minglers
+from . import books
