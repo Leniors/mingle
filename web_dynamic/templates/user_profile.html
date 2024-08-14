@@ -20,27 +20,26 @@
             <i class="bi bi-apple"></i>
             <div class="title">Mingle</div>
         </a>
-        <div class="search_area">
-            <form action="">
-                <input placeholder="Search..." type="text" required>
-                <div class="search"><i class="bi bi-search"></i></div>
-                <button type="reset" class="clear_search"><i class="bi bi-x"></i></button>
-                <div class="remove_search_area"><i class="bi bi-caret-up"></i></i></div>
-            </form>
-        </div>
         <div class="pull_right">
             <div class="editors_choice"><i class="bi bi-bookmark-fill"></i></i></div>
             <div class="user_icon"><i class="bi bi-three-dots"></i></div>
         </div>
         <div class="authentication">
-            <div class="login"><a href="/mingle/logout"><span>Logout</span><span><i class="bi bi-box-arrow-in-left"></i></span></a></div>
+            <div class="logout"><a href="/mingle/logout"><span>Logout</span><span><i class="bi bi-box-arrow-in-left"></i></span></a></div>
         </div>
-        <div class="create_options">
-            <div class="create_tale"><a href="/mingle/createtale"><span>Create Tale</span><span><i class="bi bi-book-half"></i></span></a></div>
-            <div class="create_video"><a href="#"><span>Create video</span><span><i class="bi bi-play-btn-fill"></i></span></a></div>
-            <div class="create_teaser"><a href="#"><span>Create teaser</span><span><i class="bi bi-play-circle-fill"></i></span></a></div>
-        </div>
+        
     </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash_message {{ category }}">
+                <p>{{ message }}</p>
+                <i class="bi bi-x"></i>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
 
     <nav>
         <ul>
@@ -64,7 +63,7 @@
             <li class="nav_item ">
                 <a href="/mingle/books">
                     <span class="nav_icon"><i class="bi bi-collection"></i></span>
-                    <span class="nav_tag">Market</span>
+                    <span class="nav_tag">Books</span>
                 </a>
             </li>
             <li class="nav_item">
@@ -80,32 +79,33 @@
                     </a>
                 {% endif %}
             </li>
+
+
         </ul>
     </nav>
-
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        {% for category, message in messages %}
-            <div class="flash_message {{ category }}">
-                <p>{{ message }}</p>
-                <i class="bi bi-x"></i>
-            </div>
-        {% endfor %}
-    {% endif %}
-    {% endwith %}
 
     <main>
         <div class="user_profile">
             <div class="user_info">
-                <div>
-                    <p><span>Username:</span>&emsp; {{ current_user.username }}</p>
-                    <p><span>Email:</span>&emsp; {{ current_user.email }}</p>
-                </div>
-                <div class="change_password">
-                    <ul>
-                        <a href=""><li>Edit profile</li></a>
-                        <a href="/mingle/changepassword/{{ current_user.username }}"><li>Change Password</li></a>
-                    </ul>
+                <div class="profile-card">
+                    <div class="image">
+                        <img src="https://sphero.com/cdn/shop/articles/coding_languages_800x.png?v=1619126283" alt="">
+                    </div>
+                    <div class="about">
+                        <span>{{ current_user.username }}</span>
+                        <span>{{ current_user.email }}</span>
+                    </div>
+                    <div class="buttons">
+                        <button>Edit profile</button>
+                        <button><a href="/mingle/changepassword/{{ current_user.username }}">Change password</a></button>
+                    </div>
+                    <div class="popularity">
+                        <ul>
+                            <li><i class="bi bi-heart"></i>0</li>
+                            <li><i class="bi bi-chat"></i>0</li>
+                            <li><i class="bi bi-arrow-up-right-square"></i>0</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="user_content">
@@ -143,6 +143,5 @@
             </div>
         </div>
     </main>
-    
 </body>
 </html>

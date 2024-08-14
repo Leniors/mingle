@@ -19,6 +19,14 @@
     align-items: center;
     background: #fff;
 }
+.changepassword {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+}
 .sign_up_container {
     max-width: 500px;
     min-width: 320px;

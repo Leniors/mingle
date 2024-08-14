@@ -42,11 +42,7 @@
             <div class="signup"><a href="/mingle/sign-up"><span>Signup</span><span><i class="bi bi-question-lg"></i></span></a></div>
             {% endif %}
         </div>
-        <div class="create_options">
-            <div class="create_tale"><a href="/mingle/createtale"><span>Create Tale</span><span><i class="bi bi-book-half"></i></span></a></div>
-            <div class="create_video"><a href="#"><span>Create video</span><span><i class="bi bi-play-btn-fill"></i></span></a></div>
-            <div class="create_teaser"><a href="#"><span>Create teaser</span><span><i class="bi bi-play-circle-fill"></i></span></a></div>
-        </div>
+        
     </header>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -82,7 +78,7 @@
             <li class="nav_item ">
                 <a href="/mingle/books">
                     <span class="nav_icon"><i class="bi bi-collection"></i></span>
-                    <span class="nav_tag">Market</span>
+                    <span class="nav_tag">Books</span>
                 </a>
             </li>
             <li class="nav_item">
@@ -409,7 +405,7 @@
                         <div class="galeryDetailsContent clearfix">
                             <div class="pull-left channelPhotoDescription">
                                 <div class="creator_icon">
-                                    <a href="#">
+                                    <a href="http://localhost:5000/mingle/profile/${tale.user_username}">
                                         <i class="bi bi-person-fill"></i>
                                     </a>
                                 </div>

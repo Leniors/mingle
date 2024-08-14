@@ -1,4 +1,13 @@
 /* From Uiverse.io by abrahamcalsin */
+main {
+  font-family: "Open Sans", sans-serif;
+  position: absolute;
+  top: 65px;
+  right: 0;
+  width: 100%;
+  min-height: calc(100% - 65px);
+  transition: 0.5s ease;
+}
 .spinner {
   height: calc(100vh - 115px);
   display: flex;
@@ -109,29 +118,38 @@
   }
 }
 @media screen and (min-width: 600px) {
-    .spinner {
-        position: absolute;
-        right: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        width: 80%;
-        height: calc(100vh - 65px);
-        top: 65px;
-    }
+  main {
+    position: absolute;
+    width: 80%;
+    right: 0;
+  }
+  .spinner {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: calc(100vh - 65px);
+    /* top: 65px; */
+  }
 }
 @media screen and (min-width: 875px) {
-    .spinner {
-        position: absolute;
-        right: 0;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        width: calc(100% - 200px);
-        height: calc(100vh - 65px);
-        top: 65px;
-    }
+  main {
+    position: absolute;
+    width: calc(100% - 200px);
+    right: 0;
+  }
+  .spinner {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: calc(100%);
+    height: calc(100vh - 65px);
+  }
 }

@@ -66,7 +66,11 @@ main {
 }
 .profile-card .buttons {
   display: flex;
+  flex-wrap: wrap;
+  flex: 1;
   gap: 20px;
+  align-items: stretch;
+  justify-content: center;
 }
 .profile-card .buttons button {
   margin-top: 12px;
@@ -75,10 +79,12 @@ main {
   color: white;
   border-radius: 12px;
   padding: 6px 16px;
+  width: 120px;
 }
 .profile-card .buttons button a {
   color: #fff;
   text-decoration: none;
+  flex: 1;
 }
 .profile-card .popularity ul {
   display: flex;
@@ -93,7 +99,8 @@ main {
   justify-content: center;
   margin-top: 32px;
   border-right: 1px solid rgb(0, 0, 0, 0.5);
-  padding-right: 6px;
+  padding-right: 8px;
+  gap: 5px;
 }
 .profile-card ul li:last-child {
   border-right: none;
@@ -176,6 +183,9 @@ main {
     position: absolute;
     width: 80%;
     right: 0;
+  }
+  .user_profile .user_content {
+    margin-bottom: 5px;
   }
 }
 @media screen and (min-width: 875px) {
