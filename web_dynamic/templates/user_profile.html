@@ -95,6 +95,7 @@
                         <span>{{ current_user.username }}</span>
                         <span>{{ current_user.email }}</span>
                     </div>
+
                     <div class="buttons">
                         <button>Edit profile</button>
                         <button><a href="/mingle/changepassword/{{ current_user.username }}">Change password</a></button>
@@ -120,7 +121,6 @@
                                     <i class="bi bi-person-fill"></i>
                                 </a>
                             </div>
-                            <strong class="title">{{ tale.title }}</strong>
                             <div class="videoChannel pull-left">
                                 <a href="/mingle/profile/${tale.username}">{{ tale.user_username }}</a>
                             </div>
@@ -129,6 +129,7 @@
                                     <i class="bi bi-alarm"></i>{{ tale.created_at | time_ago_in_words }}
                                 </time>
                             </div>
+                            <strong class="title">{{ tale.title }}</strong>
                         </div>
                     </div>
                     

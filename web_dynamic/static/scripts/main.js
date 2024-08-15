@@ -63,6 +63,7 @@ $(document).ready(() => {
         }
     });
 
+
     let lastScrollTop = 0;
     let header = document.querySelector("header");
     let currentWidth = window.innerWidth;

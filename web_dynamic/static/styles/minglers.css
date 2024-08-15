@@ -26,6 +26,16 @@ main {
   margin: 15px;
   margin: 5px auto;
 }
+.creator_name a {
+    text-decoration: none;
+    font-size: large;
+    font-weight: 900;
+    color: #000;
+}
+.creator_name a i {
+    font-size: medium;
+    font-weight: 200;
+}
 .user_profile_icon {
   text-align: center;
   line-height: 50px;
