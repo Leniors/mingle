@@ -31,3 +31,8 @@ class TaleForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(), length(min=2, max=128)])
     content = TextAreaField('Content', validators=[DataRequired(), length(min=2, max=1000)])
     submit = SubmitField('Create')    
+
+class EditProfileForm(FlaskForm):
+    fullname = StringField('Fullname', validators=[DataRequired(), length(min=2, max=20)])
+    about = TextAreaField('About', validators=[length(min=2, max=256)])
+    submit = SubmitField('Update')

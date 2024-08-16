@@ -14,7 +14,7 @@
 </head>
 <body>
     <header class="header">
-        <a class="logo" href="#">
+        <a class="logo" href="/mingle">
             <i class="bi bi-apple"></i>
             <div class="title">Mingle</div>
         </a>
@@ -114,14 +114,11 @@
                             </div>
                             <div class="user_info">
                             <div class="creator_name">
-                                <b><a href="http://localhost:5000/mingle/profile/${user.username}">${user.username}</a></b> &nbsp;<a href="http://localhost:5000/mingle/profile/${user.username}"><i>@${user.username}</i></a>
+                                <b><a href="http://localhost:5000/mingle/profile/${user.username}">${user.fullname}</a></b> &nbsp;<a href="http://localhost:5000/mingle/profile/${user.username}"><i>@${user.username}</i></a>
                             </div>
                             </div>
                             <div class="about_user">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-                            officiis molestiae veniam, modi voluptatem asperiores, sed beatae in
-                            accusantium ipsam at cupiditate velit qui, quae iste tenetur labore
-                            commodi error!
+                            ${user.about ? user.about : "Mingle User"}
                             </div>
                         </div>
                         `);

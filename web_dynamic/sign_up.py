@@ -7,6 +7,7 @@ from flask import render_template, flash, redirect, url_for
 from models import storage
 from models.user import User
 from werkzeug.security import generate_password_hash
+import requests
 
 @app_views.route('/sign-up', strict_slashes=False, methods=['GET', 'POST'])
 def signup():
@@ -27,8 +28,14 @@ def signup():
                 flash("Username already taken", "error")
                 return render_template("sign_up.html", form=form)
             else:
-                new_user = User(username=username, email=email, password=generate_password_hash(password1))
-                new_user.save()
-                flash("Account created", "success")
-                return redirect(url_for("app_views.login"))
+                url = "http://localhost:5001/api/v1/users"
+                data = {
+                    "email": email,
+                    "username": username,
+                    "password": generate_password_hash(password1)
+                }
+                response = requests.post(url, json=data)
+                if response.status_code == 201:
+                    flash("Account created", "success")
+                    return redirect(url_for("app_views.login"))
     return render_template("sign_up.html", form=form)

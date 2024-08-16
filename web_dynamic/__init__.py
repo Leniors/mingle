@@ -14,3 +14,4 @@ from . import create_tale
 from . import minglers
 from . import books
 from . import tales
+from . import update_profile

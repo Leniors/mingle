@@ -71,7 +71,7 @@ main {
     align-items: center;
     justify-content: right;
     flex-wrap: wrap;
-    width: 80%;
+    width: 100%;
   }
 }
 @media screen and (min-width: 875px) {
@@ -88,6 +88,6 @@ main {
     align-items: center;
     justify-content: right;
     flex-wrap: wrap;
-    width: calc(100% - 200px);
+    width: calc(100%);
   }
 }
