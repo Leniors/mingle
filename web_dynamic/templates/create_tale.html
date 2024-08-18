@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Tale</title>
+    <link rel="icon" href="../static/images/mingle_project_logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../static/styles/header.css">
     <link rel="stylesheet" href="../static/styles/navbar.css">
     <link rel="stylesheet" href="../static/styles/sign_up.css">
@@ -15,19 +16,16 @@
 
     <header class="header">
         <a class="logo" href="/mingle">
-            <i class="bi bi-apple"></i>
-            <div class="title">Mingle</div>
+            <img src="../static/images/mingle_project_logo.png" alt="">
+            
         </a>
         <div class="pull_right">            
-            <div class="user_icon"><i class="bi bi-three-dots"></i></div>
+            <button class="user_icon" popovertarget="my-popover"><i class="bi bi-three-dots"></i></button>
         </div>
-        <div class="authentication">
-            {% if current_user.is_authenticated %}
-            <div class="logout"><a href="/mingle/logout"><span>Logout</span><span><i class="bi bi-box-arrow-in-left"></i></span></a></div>
-            {% else %}
-            <div class="login"><a href="/mingle/login"><span>Login</span><span><i class="bi bi-box-arrow-in-right"></i></span></a></div>
-            <div class="signup"><a href="/mingle/sign-up"><span>Signup</span><span><i class="bi bi-question-lg"></i></span></a></div>
-            {% endif %}
+        <div id="my-popover" class="authentication" popover>
+            <div class="popover_element">
+                <div class="logout"><a href="/mingle/logout"><span>Logout</span><span><i class="bi bi-box-arrow-in-left"></i></span></a></div>
+            </div>
         </div>
         
     </header>
@@ -52,9 +50,9 @@
                 </a>
             </li>
             <li class="nav_item ">
-                <a href="/mingle/books">
+                <a href="/mingle/collections">
                     <span class="nav_icon"><i class="bi bi-collection"></i></span>
-                    <span class="nav_tag">Books</span>
+                    <span class="nav_tag">Collections</span>
                 </a>
             </li>
             <li class="nav_item">
@@ -87,7 +85,7 @@
     <div class="create_tale">
         <div class="sign_up_container">
             <p class="title">Create Tale</p>
-            <form method="post" method="POST" class="sign_up_form">
+            <form method="post"  class="sign_up_form">
                 {{ form.hidden_tag() }}
                 <div class="form">
                     <div class="username inputBox">

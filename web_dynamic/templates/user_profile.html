@@ -16,15 +16,17 @@
 <body>
     <header>
         <a class="logo" href="/mingle">
-            <i class="bi bi-apple"></i>
-            <div class="title">Mingle</div>
+            <img src="{{ url_for('static', filename='images/mingle_project_logo.png') }}" alt="">
+            
         </a>
         <div class="pull_right">
             <div class="editors_choice"><i class="bi bi-bookmark-fill"></i></i></div>
-            <div class="user_icon"><i class="bi bi-three-dots"></i></div>
+            <button class="user_icon" popovertarget="my-popover"><i class="bi bi-three-dots"></i></button>
         </div>
-        <div class="authentication">
-            <div class="logout"><a href="/mingle/logout"><span>Logout</span><span><i class="bi bi-box-arrow-in-left"></i></span></a></div>
+        <div id="my-popover" class="authentication" popover>
+            <div class="popover_element">
+                <div class="logout"><a href="/mingle/logout"><span>Logout</span><span><i class="bi bi-box-arrow-in-left"></i></span></a></div>
+            </div>
         </div>
         
     </header>
@@ -60,7 +62,7 @@
                 </a>
             </li>
             <li class="nav_item ">
-                <a href="/mingle/books">
+                <a href="/mingle/collections">
                     <span class="nav_icon"><i class="bi bi-collection"></i></span>
                     <span class="nav_tag">Books</span>
                 </a>
@@ -87,62 +89,194 @@
         <div class="user_profile">
             <div class="user_info">
                 <div class="profile-card">
-                    <div class="image">
-                        <img src="https://sphero.com/cdn/shop/articles/coding_languages_800x.png?v=1619126283" alt="">
+                    <div class="user_main_info">
+                        <div class="image">
+                            <img src="{{ url_for('static', filename='images/mingler_project_profile.png') }}" alt="">
+                        </div>
+                        <div class="about">
+                            <span>{{ current_user.fullname }}</span>
+                            <span>@{{ current_user.username }}</span>
+                            <span>{{ current_user.email }}</span>
+                        </div>
                     </div>
-                    <div class="about">
-                        <span>{{ current_user.fullname }}</span>
-                        <span>@{{ current_user.username }}</span>
-                        <span>{{ current_user.email }}</span>
-                    </div>
-
                     <div class="buttons">
                         <button><a href="/mingle/profile/{{ current_user.username}}/editprofile">Edit profile</a></button>
                         <button><a href="/mingle/changepassword/{{ current_user.username }}">Change password</a></button>
-                    </div>
-                    <div class="popularity">
-                        <ul>
-                            <li><i class="bi bi-heart"></i>0</li>
-                            <li><i class="bi bi-chat"></i>0</li>
-                            <li><i class="bi bi-arrow-up-right-square"></i>0</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="user_content">
-                {% if current_user.tales %}
-                {% for tale in current_user.tales %}
-                <div class="tale">
-                    <div class="galeryDetailsContent clearfix">
-                        <!-- <div class="clearfix"></div> -->
-                        <div class="pull-left channelPhotoDescription">
-                            <div class="creator_icon">
-                                <a href="#">
-                                    <i class="bi bi-person-fill"></i>
-                                </a>
-                            </div>
-                            <div class="videoChannel pull-left">
-                                <a href="/mingle/profile/${tale.username}">{{ tale.user_username }}</a>
-                            </div>
-                            <div class="galeryDetails pull-left">
-                                <time datetime="2024-05-03 13:24:51" class="videoHumanTime pull-right">
-                                    <i class="bi bi-alarm"></i>{{ tale.created_at | time_ago_in_words }}
-                                </time>
-                            </div>
-                            <strong class="title">{{ tale.title }}</strong>
-                        </div>
+                        <button><a href="http://localhost:5000/mingle/createcollection">Create collection</a></button>
+                        <button popovertarget="about_user">About</a></button>
+                        <div id="about_user" popover>{{ current_user.about }}</div>
                     </div>
                     
-                    <div class="thumbsImageContainer">
-                        <div class="aspectRatio16_9">{{ tale.content }}</div>
-                    </div>
                 </div>
-                {% endfor %}
-                {% else %}
-                Create tales and see them here!
-                {% endif %}
             </div>
+            <div class="type_of_content">
+                <div class="show_tales active">Tales</div>
+                <div class="show_collections">Collections</div>
+            </div>
+            <div class="user_content">
+                <div class="user_tales_content active_content">
+                    {% if current_user.tales %}
+                    {% for tale in current_user.tales %}
+                    <div class="tale">
+                        <div class="galeryDetailsContent clearfix">
+                            <div class="pull-left channelPhotoDescription">
+                                <div class="creator_icon">
+                                    <a href="#">
+                                        <i class="bi bi-person-fill"></i>
+                                    </a>
+                                </div>
+                                <div class="videoChannel pull-left">
+                                    <a href="/mingle/profile/{{ tale.user_username }}">{{ tale.user_username }}</a>
+                                </div>
+                                <div class="galeryDetails pull-left">
+                                    <time datetime="{{ tale.created_at }}" class="videoHumanTime pull-right">
+                                        <i class="bi bi-alarm"></i>{{ tale.updated_at | time_ago_in_words }}
+                                    </time>
+                                </div>
+                                <strong class="title">{{ tale.title }}</strong>
+                            </div>
+                        </div>
+                        
+                        <div class="thumbsImageContainer" onclick="openTale('{{ tale.id }}')">
+                            <div class="aspectRatio16_9">{{ tale.content }}</div>
+                        </div>
+                        <div class="edit_tale_section">
+                            <button class="edit_tale"><a href="/mingle/tales/{{ tale.id }}/update">Edit</a><i class="bi bi-pen-fill"></i></button>
+                            <button class="delete_tale" popovertarget="delete_popover_{{ tale.id }}">Delete<i class="bi bi-trash-fill"></i></button>
+                        </div>
+                        <div id="delete_popover_{{ tale.id }}" class="delete_tale_popover" popover>
+                            <p>Are You sure you want to delete this tale? </p>
+                            <button class="delete_tale" onclick="delete_tale(event, '{{ tale.id }}', '{{ tale.user_username }}')">
+                                Delete<i class="bi bi-trash-fill"></i>
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    Create tales and see them here!
+                    {% endif %}
+                </div>
+            
+                <div class="user_collections_content">
+                    {% if current_user.collections %}
+                    {% for collection in current_user.collections %}
+                    <div class="collection">
+                        <img src="{{ url_for('static', filename='images/book.png') }}" alt="" onclick="openCollection('{{ collection.id }}')">
+                        <div class="collection_info">
+                            <span class="collection_title">{{ collection.title }}</span>
+                            <span class="collection_description">{{ collection.description }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    Create collections and see them here!
+                    {% endif %}
+                </div>
+            </div>
+            
         </div>
     </main>
+    <script>
+        function openTale(id) {
+            window.location.href = `/mingle/tales/${id}`;
+        }
+        function openCollection(id) {
+            window.location.href = `/mingle/collection/${id}`;
+        }
+
+        const delete_tale = (e, taleId, userUsername) => {
+            e.preventDefault(); // Prevent the default button behavior
+
+            // Remove the tale element from the DOM
+            const taleElement = document.getElementById(`delete_popover_${taleId}`).closest('.tale');
+            taleElement.remove();
+
+            // Send a DELETE request to the API to delete the tale from the backend
+            fetch(`http://localhost:5001//api/v1/tales/${taleId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log(`Tale ${taleId} deleted successfully.`);
+                    window.location.href = `/mingle/profile/${userUsername}`;
+                } else {
+                    console.error(`Failed to delete tale ${taleId}.`);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        };
+
+
+        let lastScrollTop_t = 0;
+        let header_t = document.querySelector(".type_of_content");
+        let currentWidth_t = window.innerWidth;
+
+        // Function to initialize or reinitialize your JavaScript logic
+        const initialize_t = () => {
+            // Check if the window width is less than or equal to 695 pixels
+            if (currentWidth_t <= 600) {
+                // Remove existing scroll event listeners
+                window.removeEventListener('scroll', handleScroll_t);
+
+                // Add new scroll event listener
+                window.addEventListener('scroll', handleScroll_t);
+            } else {
+                // Remove scroll event listener if the window width is greater than 695 pixels
+                window.removeEventListener('scroll', handleScroll_t);
+                header_t.classList.remove('hidden');
+            }
+        };
+
+        // Function to handle scroll events
+        const handleScroll_t = () => {
+            const currentScroll_t = window.pageYOffset || document.documentElement.scrollTop;
+            if (header_t) { // Ensure header is defined
+                if (currentScroll_t > lastScrollTop_t) {
+                    // Scroll down
+                    header_t.classList.add('hidden');
+                } else {
+                    // Scroll up
+                    header_t.classList.remove('hidden');
+                }
+            }
+
+            lastScrollTop_t = currentScroll_t <= 0 ? 0 : currentScroll_t; // For Mobile or negative scrolling
+        };
+
+        // Function to reload JavaScript on width change
+        window.addEventListener('resize', () => {
+            const newWidth_t = window.innerWidth;
+
+            if (newWidth_t !== currentWidth_t) {
+                currentWidth_t = newWidth_t;
+                initialize_t();
+            }
+        });
+
+        // Initial load
+        initialize_t();
+
+        $('.type_of_content div').click(function() {
+            // Remove 'active' class from all tabs
+            $('.type_of_content div').removeClass('active');
+            // Add 'active' class to the clicked tab
+            $(this).addClass('active');
+
+            // Remove 'active_content' class from all content sections
+            $('.user_content > div').removeClass('active_content');
+            
+            // Check which tab was clicked and show the corresponding content
+            if ($(this).hasClass('show_tales')) {
+                $('.user_tales_content').addClass('active_content');
+            } else if ($(this).hasClass('show_collections')) {
+                $('.user_collections_content').addClass('active_content');
+            }
+        });
+    </script>
 </body>
 </html>

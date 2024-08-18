@@ -4,8 +4,6 @@ index file
 """
 from api.v1.views import app_views
 from flask import jsonify
-import models
-from models.category import Category
 from models.base_model import BaseModel, Base
 from models import storage
 

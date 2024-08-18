@@ -7,7 +7,14 @@ main {
   min-height: calc(100% - 65px);
   transition: 0.5s ease;
 }
+.no_content {
+  height: calc(100vh - 65px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .tale_content {
+  /* position: relative; */
   margin: auto;
   width: 100%;
   padding-top: 3px;
@@ -111,8 +118,6 @@ main {
 .tale .thumbsImageContainer {
   position: relative;
   display: flex;
-  /* justify-content: center;
-    align-items: center; */
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   margin: 5px;
@@ -127,7 +132,60 @@ main {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+.tale .aspectRatio16_9.show_all {
+  -webkit-line-clamp: unset;
+}
+.edit_tale_section {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding: 3px;
+}
+.edit_tale_section .edit_tale {
+  border: 2px solid black;
+  border-radius: 4px;
+  margin-right: 10px;
+  color: rgb(17, 67, 17);
+  letter-spacing: 1px;
+  font-weight: 750;
+  padding: 2px;
+}
+.edit_tale_section .edit_tale a {
+  color: rgb(17, 67, 17);
+}
+.edit_tale_section .delete_tale {
+  border: 2px solid black;
+  border-radius: 4px;
+  color: rgb(242, 25, 25);
+  letter-spacing: 1px;
+  font-weight: 750;
+  padding: 2px;
+}
+.delete_tale_popover {
+  position: fixed;
+  top: 50%;
+  margin: 0 auto;
+  border: none;
+  width: 350px;
+  height: 100px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: gray;
+  scrollbar-width: none;
+}
+.delete_tale_popover p {
+  font-weight: 500;
+}
+.delete_tale_popover button {
+  padding: 4px;
+  border-radius: 7px;
+  width: 100px;
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  color: red;
+}
 @media screen and (min-width: 600px) {
   main {
     position: absolute;

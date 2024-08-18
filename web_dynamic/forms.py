@@ -2,7 +2,7 @@
 """ signup form class """
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, EmailField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, EmailField, TextAreaField, SelectMultipleField
 from wtforms.validators import DataRequired, Email, EqualTo, length
 
 class SignUpForm(FlaskForm):
@@ -36,3 +36,20 @@ class EditProfileForm(FlaskForm):
     fullname = StringField('Fullname', validators=[DataRequired(), length(min=2, max=20)])
     about = TextAreaField('About', validators=[length(min=2, max=256)])
     submit = SubmitField('Update')
+    
+class EditTaleForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired(), length(min=2, max=124)])
+    content = TextAreaField('Content', validators=[length(min=2, max=2000)])
+    submit = SubmitField('Update')
+
+class CollectionForm(FlaskForm):
+    """Form for creating or editing a collection"""
+    title = StringField('Title', validators=[DataRequired(), length(min=2, max=128)])
+    description = TextAreaField('Description', validators=[length(max=124)], render_kw={"rows": 4})
+    submit = SubmitField('Create')
+
+class AddTalesToCollectionForm(FlaskForm):
+    """Form for adding tales to a collection"""
+    tales = SelectMultipleField('Tales', coerce=str)
+    submit = SubmitField('Add Tales')
+    

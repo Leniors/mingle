@@ -37,31 +37,31 @@ $(document).ready(() => {
 
     list.forEach(item => $(item).click(activeLink));
 
-    $(".pull_right .user_icon").click(function() {
-        $(".authentication").toggleClass("active");
-        $(".create_options").removeClass("active");
-        $(".navbar").removeClass("active");
-        if ($(".menu_icon i").hasClass("bi-x")) {
-            $(".menu_icon i").toggleClass("bi-x");
-        }
-        if (window.innerWidth <= 800) {
-            $(".search_area").css("display", "none");
-            $(".pull_right .search_icon").css("display", "inline-block");
-        }
-    });
+    // $(".pull_right .user_icon").click(function() {
+    //     $(".authentication").toggleClass("active");
+    //     $(".create_options").removeClass("active");
+    //     $(".navbar").removeClass("active");
+    //     if ($(".menu_icon i").hasClass("bi-x")) {
+    //         $(".menu_icon i").toggleClass("bi-x");
+    //     }
+    //     if (window.innerWidth <= 800) {
+    //         $(".search_area").css("display", "none");
+    //         $(".pull_right .search_icon").css("display", "inline-block");
+    //     }
+    // });
 
-    $(".pull_right .create_icon").click(function() {
-        $(".authentication").removeClass("active");
-        $(".create_options").toggleClass("active");
-        $(".navbar").removeClass("active");
-        if ($(".menu_icon i").hasClass("bi-x")) {
-            $(".menu_icon i").toggleClass("bi-x");
-        }
-        if (window.innerWidth <= 800) {
-            $(".search_area").css("display", "none");
-            $(".pull_right .search_icon").css("display", "inline-block");
-        }
-    });
+    // $(".pull_right .create_icon").click(function() {
+    //     $(".authentication").removeClass("active");
+    //     $(".create_options").toggleClass("active");
+    //     $(".navbar").removeClass("active");
+    //     if ($(".menu_icon i").hasClass("bi-x")) {
+    //         $(".menu_icon i").toggleClass("bi-x");
+    //     }
+    //     if (window.innerWidth <= 800) {
+    //         $(".search_area").css("display", "none");
+    //         $(".pull_right .search_icon").css("display", "inline-block");
+    //     }
+    // });
 
 
     let lastScrollTop = 0;

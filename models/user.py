@@ -21,6 +21,7 @@ class User(BaseModel, Base, UserMixin):
         super_admin = Column(Boolean, default=False, nullable=False)
         about = Column(String(256), nullable=True, unique=False)
         tales = relationship('Tale', backref='user')
+        collections = relationship('Collection', backref='user')
 
     def __init__(self, *args, **kwargs):
         """initializes user"""

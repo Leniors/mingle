@@ -16,8 +16,8 @@
 <body>
     <header>
         <a class="logo" href="/mingle">
-            <i class="bi bi-apple"></i>
-            <div class="title">Mingle</div>
+            <img src="../static/images/mingle_project_logo.png" alt="">
+            
         </a>
         <div class="search_area">
             <form action="">
@@ -29,10 +29,12 @@
         </div>
         <div class="pull_right">
             <div class="editors_choice"><i class="bi bi-bookmark-fill"></i></i></div>
-            <div class="user_icon"><i class="bi bi-three-dots"></i></div>
+            <button class="user_icon" popovertarget="my-popover"><i class="bi bi-three-dots"></i></button>
         </div>
-        <div class="authentication">
-            <div class="logout"><a href="/mingle/logout"><span>Logout</span><span><i class="bi bi-box-arrow-in-left"></i></span></a></div>
+        <div id="my-popover" class="authentication" popover>
+            <div class="popover_element">
+                <div class="logout"><a href="/mingle/logout"><span>Logout</span><span><i class="bi bi-box-arrow-in-left"></i></span></a></div>
+            </div>
         </div>
         
     </header>
@@ -68,9 +70,9 @@
                 </a>
             </li>
             <li class="nav_item ">
-                <a href="/mingle/books">
+                <a href="/mingle/collections">
                     <span class="nav_icon"><i class="bi bi-collection"></i></span>
-                    <span class="nav_tag">Books</span>
+                    <span class="nav_tag">Collections</span>
                 </a>
             </li>
             <li class="nav_item">
@@ -109,13 +111,7 @@
                         <button>Subscribe</button>
                         <button>Message</button>
                     </div>
-                    <div class="popularity">
-                        <ul>
-                            <li><i class="bi bi-heart"></i>0</li>
-                            <li><i class="bi bi-chat"></i>0</li>
-                            <li><i class="bi bi-arrow-up-right-square"></i>0</li>
-                        </ul>
-                    </div>
+                    
                 </div>
             </div>
             <div class="user_content">
@@ -136,7 +132,7 @@
                             </div>
                             <div class="galeryDetails pull-left">
                                 <time datetime="2024-05-03 13:24:51" class="videoHumanTime pull-right">
-                                    <i class="bi bi-alarm"></i>{{ tale.created_at | time_ago_in_words }}
+                                    <i class="bi bi-alarm"></i>{{ tale.updated_at | time_ago_in_words }}
                                 </time>
                             </div>
                         </div>

@@ -18,24 +18,36 @@ main {
   padding: 13px;
   align-items: center;
 }
-.profile-card .image {
-  width: 130px;
-  height: 130px;
-  border-radius: 12px;
+.profile-card .user_main_info {
+  display: flex;
+  align-items: center;
+  width: 100%;
   z-index: 1;
+  padding: auto;
+}
+.profile-card .image {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  z-index: 1;
+  background-color: #fff;
 }
 .profile-card .image img {
   width: 120px;
   height: 120px;
-  border: 2px solid white;
+  border: none;
   border-radius: 50%;
   object-fit: cover;
 }
 .profile-card .about {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 7px;
+  color: #fff;
+  padding: 10px;
 }
 .profile-card .about > :first-child {
   font-size: x-large;
@@ -71,9 +83,10 @@ main {
   gap: 20px;
   align-items: stretch;
   justify-content: center;
+  margin-top: 10px;
 }
 .profile-card .buttons button {
-  margin-top: 12px;
+  margin-top: 5px;
   background-color: rgb(0, 0, 255, 0.8);
   border: none;
   color: white;
@@ -109,20 +122,16 @@ main {
   background-color: blue;
   content: "";
   position: absolute;
-  height: 120px;
+  height: 126px;
   width: 100%;
   top: 0;
   left: 0;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
-.user_profile {
-  /* text-align: center; */
-  padding: 5px;
-}
 .user_profile .user_info {
   border-radius: 20px;
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -138,10 +147,6 @@ main {
 }
 .user_profile .user_content {
   border-radius: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
   margin-bottom: 50px;
 }
 .user_profile .user_info .change_password {
@@ -177,6 +182,109 @@ main {
 }
 .user_profile .user_info .change_password ul a li:hover {
   color: #fff;
+}
+.type_of_content {
+  position: sticky;
+  top: 65px;
+  background-color: #fff;
+  display: flex;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #000;
+  width: 100%;
+  z-index: 1;
+  transition: top 0.3s;
+}
+.type_of_content.hidden {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  display: flex;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #000;
+  width: 100%;
+  z-index: 1;
+}
+.type_of_content div {
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+}
+.type_of_content div.active {
+  background-color: darkgrey;
+  font-weight: 800;
+}
+.type_of_content div:first-of-type {
+  border-right: 2px solid #000;
+}
+#about_user {
+  position: fixed;
+  top: 50%;
+  margin: 0 auto;
+  border: none;
+  width: 350px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: gray;
+  scrollbar-width: none;
+  color: #fff;
+}
+.user_content > div {
+  display: none;
+}
+.user_content > div.active_content {
+  display: flex;
+}
+.user_tales_content {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+.user_collections_content {
+  text-align: center;
+  width: 100%;
+  margin: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+}
+.collection {
+  position: relative;
+  text-align: center;
+}
+
+.collection img {
+  height: 280px;
+  object-fit: cover;
+}
+
+.collection .collection_info {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-45%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 65%;
+}
+.collection .collection_info .collection_title {
+  font-size: x-large;
+  font-weight: 900;
+}
+.collection .collection_info .collection_description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 @media screen and (min-width: 600px) {
   main {

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections</title>
+    <link rel="icon" href="../static/images/mingle_project_logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/styles/header.css">
+    <link rel="stylesheet" href="../static/styles/navbar.css">
+    <link rel="stylesheet" href="../static/styles/spinner.css">
+    <link rel="stylesheet" href="../static/styles/collection_content.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../static/scripts/main.js"></script>
+</head>
+<body>
+    <header class="header">
+        <a class="logo" href="/mingle">
+            <img src="../static/images/mingle_project_logo.png" alt="">
+            
+        </a>
+        <div class="search_area">
+            <form action="">
+                <input placeholder="Search..." type="text" required>
+                <div class="search"><i class="bi bi-search"></i></div>
+                <button type="reset" class="clear_search"><i class="bi bi-x"></i></button>
+                <div class="remove_search_area"><i class="bi bi-caret-up"></i></i></div>
+            </form>
+        </div>
+        <div class="pull_right">
+            <button type="submit" class="active search_icon"><i class="bi bi-search"></i></button>
+            
+            <div class="editors_choice"><i class="bi bi-bookmark-fill"></i></i></div>
+            <button class="user_icon" popovertarget="my-popover"><i class="bi bi-three-dots"></i></button>
+        </div>
+        <div id="my-popover" class="authentication" popover>
+            <div class="popover_element">
+                {% if current_user.is_authenticated %}
+                <div class="logout"><a href="/mingle/logout"><span>Logout</span><span><i class="bi bi-box-arrow-in-left"></i></span></a></div>
+                {% else %}
+                <div class="login"><a href="/mingle/login"><span>Login</span><span><i class="bi bi-box-arrow-in-right"></i></span></a></div>
+                <div class="signup"><a href="/mingle/sign-up"><span>Signup</span><span><i class="bi bi-question-lg"></i></span></a></div>
+                {% endif %}
+            </div>
+        </div>
+        
+    </header>
+
+    <nav>
+        <ul>
+            <li class="nav_item">
+                <a href="/mingle">
+                    <span class="nav_icon"><i class="bi bi-house-door"></i></span><span class="nav_tag">Home</span>
+                </a>
+            </li>
+            <li class="nav_item active">
+                <a href="/mingle/minglers">
+                    <span class="nav_icon"><i class="bi bi-people"></i></span>
+                    <span class="nav_tag">Minglers</span>
+                </a>
+            </li>
+            <li class="nav_item ">
+                <a href="/mingle/createtale">
+                    <span class="nav_icon"><i class="bi bi-plus-circle"></i></span>
+                    <span class="nav_tag">Create</span>
+                </a>
+            </li>
+            <li class="nav_item ">
+                <a href="/mingle/collections">
+                    <span class="nav_icon"><i class="bi bi-collection-fill"></i></span>
+                    <span class="nav_tag">Collections</span>
+                </a>
+            </li>
+            <li class="nav_item">
+                {% if current_user.is_authenticated %}
+                    <a href="/mingle/profile/{{ current_user.username }}">
+                        <span class="nav_icon"><i class="bi bi-person"></i></span>
+                        <span class="nav_tag">Profile</span>
+                    </a>
+                {% else %}
+                    <a href="/mingle/login">
+                        <span class="nav_icon"><i class="bi bi-person"></i></span>
+                        <span class="nav_tag">Login</span>
+                    </a>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="spinner">
+            <div class="dot-spinner">
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function openCollection(id) {
+            window.location.href = `/mingle/collection/${id}`;
+        }
+
+        fetch('http://localhost:5001/api/v1/collections/')
+            .then(response => response.json())
+            .then(data => {
+                if (data.length > 0) {
+                    $("main").empty();
+                    $("main").append("<div class='collection_content'></div>");
+                    data.forEach((collection, index) => {
+                        $(".collection_content").append(`
+                            <div class="collection">
+                                <img src="{{ url_for('static', filename='images/book.png') }}" alt="" data-id="${collection.id}">
+                                <div class="collection_info">
+                                    <span class="collection_title">${collection.title}</span>
+                                    <span class="collection_description">${collection.description}</span>
+                                </div>
+                            </div>
+                        `);
+                    });
+
+                    // Attach the click event to the dynamically added images
+                    $(".collection_content").on("click", "img", function() {
+                        const id = $(this).data("id");
+                        openCollection(id);
+                    });
+                }
+            });
+    </script>
+</body>
+</html>
+

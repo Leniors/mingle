@@ -4,19 +4,18 @@ Contains the class DBStorage
 """
 
 import models
-from models.category import Category
 from models.user import User
 from models.tale import Tale
-from models.base_model import BaseModel, Base
+from models.collections import Collection
+from models.base_model import Base
 from os import getenv
-import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from dotenv import load_dotenv
 
 load_dotenv()
 
-classes = {"Category": Category, "User": User, "Tale": Tale}
+classes = {"Collection": Collection, "User": User, "Tale": Tale}
 
 
 class DBStorage:
