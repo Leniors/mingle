@@ -30,3 +30,5 @@ The application includes interactive features powered by JavaScript and AJAX. Th
 
 Future Enhancements
 In future iterations, the Front-End might be further enhanced by integrating modern JavaScript frameworks like React or Vue.js, which would allow for more dynamic and component-based UIs.
+
+Added a collections feeature for the users to connect related tales.
