@@ -15,7 +15,7 @@ def create_tale():
     """ create_tale function """
     form = TaleForm()
     if form.validate_on_submit():
-        url = "http://lwww.leeroynyanchwa.tech:5001/api/v1/tales"
+        url = "http://www.leeroynyanchwa.tech:5001/api/v1/tales"
         data = {
             "title": form.title.data,
             "content": form.content.data,

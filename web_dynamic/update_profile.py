@@ -24,7 +24,7 @@ def edit_profile(username):
         fullname = form.fullname.data
         about = form.about.data
         
-        url = f"http://lwww.leeroynyanchwa.tech:5001/api/v1/users/{username}"
+        url = f"http://www.leeroynyanchwa.tech:5001/api/v1/users/{username}"
         data = {
             "fullname": fullname,
             "about": about

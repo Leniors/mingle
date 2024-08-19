@@ -28,7 +28,7 @@ def signup():
                 flash("Username already taken", "error")
                 return render_template("sign_up.html", form=form)
             else:
-                url = "http://lwww.leeroynyanchwa.tech:5001/api/v1/users"
+                url = "http://www.leeroynyanchwa.tech:5001/api/v1/users"
                 data = {
                     "email": email,
                     "username": username,
