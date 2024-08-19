@@ -118,6 +118,7 @@
                         <div class="thumbsImageContainer" onclick="openTale('{{ tale.id }}')">
                             <div class="aspectRatio16_9">{{ tale.content }}</div>
                         </div>
+                        {% if collection.user_id == current_user.id %}
                         <div class="edit_tale_section">
                             <button class="edit_tale"><a href="/mingle/tales/{{ tale.id }}/update">Edit</a><i class="bi bi-pen-fill"></i></button>
                             <button class="delete_tale" popovertarget="delete_popover_{{ tale.id }}">Delete<i class="bi bi-trash-fill"></i></button>
@@ -128,6 +129,8 @@
                                 Delete<i class="bi bi-trash-fill"></i>
                             </button>
                         </div>
+                        {% else %}
+                        {% endif %}
                     </div>
                     {% endfor %}
                     {% else %}
