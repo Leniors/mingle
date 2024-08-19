@@ -15,7 +15,7 @@ def create_collection():
     """ Create a new collection """
     form = CollectionForm()
     if form.validate_on_submit():
-        url = "http://www.leeroynyanchwa.tech:5001/api/v1/collections"  # Adjust URL to your API endpoint
+        url = "https://www.leeroynyanchwa.tech/api/v1/collections"  # Adjust URL to your API endpoint
         data = {
             "title": form.title.data,
             "description": form.description.data,

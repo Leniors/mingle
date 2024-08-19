@@ -166,7 +166,7 @@
             window.location.href = `/mingle/tales/${id}`;
         }
 
-        fetch('http://www.leeroynyanchwa.tech:5001/api/v1/tales/')
+        fetch('https://www.leeroynyanchwa.tech/api/v1/tales/')
             .then(response => response.json())
             .then(data => {
                 if (data.length > 0) {

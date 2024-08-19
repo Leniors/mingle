@@ -33,7 +33,7 @@ def update_tale(id):
         title = form.title.data
         content = form.content.data
         
-        url = f"http://www.leeroynyanchwa.tech:5001/api/v1/tales/{id}"
+        url = f"https://www.leeroynyanchwa.tech/api/v1/tales/{id}"
         data = {
             "title": title,
             "content": content
