@@ -1,7 +1,8 @@
 Author - Leeroy Mokua Ondieki (email - leeroynyanchwa@gmail.com)
 
 
-Front-End
+Front-End.
+
 The web_dynamic directory defines the Front-End of the Mingle application. I use the Flask framework from Python to achieve this. I choose Flask because it is easy and simple to set up a project and get running, making it easier to focus on the ideas of the project.
 
 Structure of the Front-End
@@ -31,7 +32,8 @@ The application includes interactive features powered by JavaScript and AJAX. Th
 Future Enhancements
 In future iterations, the Front-End might be further enhanced by integrating modern JavaScript frameworks like React or Vue.js, which would allow for more dynamic and component-based UIs.
 
-Backend
+Backend.
+
 The backend of this application is built with Flask, SQLAlchemy, and Flask-RESTful, handling the API requests and managing the database. The project is structured into different modules and follows a clear object-relational mapping (ORM) model with SQLAlchemy, making it easy to manage and manipulate data. Below is an overview of the backend components.
 
 Models
